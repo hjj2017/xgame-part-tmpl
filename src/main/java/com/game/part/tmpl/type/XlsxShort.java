@@ -14,6 +14,9 @@ import com.game.part.util.Assert;
  * 
  */
 public class XlsxShort extends BasicTypeCol<Short> {
+    /** 0 值 */
+    private static final short ZERO = 0;
+
     /**
      * 类默认构造器
      *
@@ -89,7 +92,7 @@ public class XlsxShort extends BasicTypeCol<Short> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxShort createByInterval(boolean nullable, Short defaultVal, short minVal, short maxVal) {
+    public static XlsxShort createByInterval(boolean nullable, short defaultVal, short minVal, short maxVal) {
         // 创建 XlsxShort 对象
         return new XlsxShort(nullable, defaultVal) {
             @Override
@@ -122,11 +125,11 @@ public class XlsxShort extends BasicTypeCol<Short> {
     }
 
     /**
-     * @see #createByInterval(boolean, Short, short, short)
+     * @see #createByInterval(boolean, short, short, short)
      */
     public static XlsxShort createByInterval(boolean nullable, short minVal, short maxVal) {
         return createByInterval(
-            nullable, null, minVal, maxVal
+            nullable, ZERO, minVal, maxVal
         );
     }
 
@@ -140,18 +143,18 @@ public class XlsxShort extends BasicTypeCol<Short> {
      * @param minVal
      * @return
      */
-    public static XlsxShort createByMin(boolean nullable, Short defaultVal, short minVal) {
+    public static XlsxShort createByMin(boolean nullable, short defaultVal, short minVal) {
         return createByInterval(
             nullable, defaultVal, minVal, Short.MAX_VALUE
         );
     }
 
     /**
-     * @see #createByMin(boolean, Short, short)
+     * @see #createByMin(boolean, short, short)
      */
     public static XlsxShort createByMin(boolean nullable, short minVal) {
         return createByInterval(
-            nullable, null, minVal, Short.MAX_VALUE
+            nullable, ZERO, minVal, Short.MAX_VALUE
         );
     }
 
@@ -165,18 +168,18 @@ public class XlsxShort extends BasicTypeCol<Short> {
      * @param maxVal
      * @return
      */
-    public static XlsxShort createByMax(boolean nullable, Short defaultVal, short maxVal) {
+    public static XlsxShort createByMax(boolean nullable, short defaultVal, short maxVal) {
         return createByInterval(
             nullable, defaultVal, Short.MIN_VALUE, maxVal
         );
     }
 
     /**
-     * @see #createByMax(boolean, Short, short)
+     * @see #createByMax(boolean, short, short)
      */
     public static XlsxShort createByMax(boolean nullable, short maxVal) {
         return createByInterval(
-            nullable, null, Short.MIN_VALUE, maxVal
+            nullable, ZERO, Short.MIN_VALUE, maxVal
         );
     }
 
@@ -192,7 +195,7 @@ public class XlsxShort extends BasicTypeCol<Short> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxShort createByEnum(boolean nullable, Short defaultVal, short ... enumShortArr) {
+    public static XlsxShort createByEnum(boolean nullable, short defaultVal, short[] enumShortArr) {
         // 断言参数不为空
         Assert.notNullOrEmpty(enumShortArr, "enumShortArr");
 
@@ -238,11 +241,11 @@ public class XlsxShort extends BasicTypeCol<Short> {
     }
 
     /**
-     * @see #createByEnum(boolean, short...)
+     * @see #createByEnum(boolean, short[])
      */
-    public static XlsxShort createByEnum(boolean nullable, short ... enumShortArr) {
+    public static XlsxShort createByEnum(boolean nullable, short[] enumShortArr) {
         return createByEnum(
-            nullable, null, enumShortArr
+            nullable, ZERO, enumShortArr
         );
     }
 }

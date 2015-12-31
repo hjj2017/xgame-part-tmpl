@@ -13,6 +13,9 @@ import com.game.part.tmpl.XlsxTmplError;
  * 
  */
 public class XlsxLong extends BasicTypeCol<Long> {
+    /** 0 值 */
+    private static final long ZERO = 0L;
+
     /**
      * 类默认构造器
      *
@@ -88,7 +91,7 @@ public class XlsxLong extends BasicTypeCol<Long> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxLong createByInterval(boolean nullable, Long defaultVal, long minVal, long maxVal) {
+    public static XlsxLong createByInterval(boolean nullable, long defaultVal, long minVal, long maxVal) {
         // 创建 XlsxLong 对象
         return new XlsxLong(nullable, defaultVal) {
             @Override
@@ -121,11 +124,11 @@ public class XlsxLong extends BasicTypeCol<Long> {
     }
 
     /**
-     * @see #createByInterval(boolean, Long, long, long)
+     * @see #createByInterval(boolean, long, long, long)
      */
     public static XlsxLong createByInterval(boolean nullable, long minVal, long maxVal) {
         return createByInterval(
-            nullable, null, minVal, maxVal
+            nullable, ZERO, minVal, maxVal
         );
     }
 
@@ -141,18 +144,18 @@ public class XlsxLong extends BasicTypeCol<Long> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxLong createByMin(boolean nullable, Long defaultVal, long minVal) {
+    public static XlsxLong createByMin(boolean nullable, long defaultVal, long minVal) {
         return createByInterval(
             nullable, defaultVal, minVal, Long.MAX_VALUE
         );
     }
 
     /**
-     * @see #createByMin(boolean, Long, long)
+     * @see #createByMin(boolean, long, long)
      */
     public static XlsxLong createByMin(boolean nullable, long minVal) {
         return createByInterval(
-            nullable, null, minVal, Long.MAX_VALUE
+            nullable, ZERO, minVal, Long.MAX_VALUE
         );
     }
 
@@ -168,18 +171,18 @@ public class XlsxLong extends BasicTypeCol<Long> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxLong createByMax(boolean nullable, Long defaultVal, long maxVal) {
+    public static XlsxLong createByMax(boolean nullable, long defaultVal, long maxVal) {
         return createByInterval(
             nullable, defaultVal, Long.MIN_VALUE, maxVal
         );
     }
 
     /**
-     * @see #createByMax(boolean, Long, long)
+     * @see #createByMax(boolean, long, long)
      */
     public static XlsxLong createByMax(boolean nullable, long maxVal) {
         return createByInterval(
-            nullable, null, Long.MIN_VALUE, maxVal
+            nullable, ZERO, Long.MIN_VALUE, maxVal
         );
     }
 }

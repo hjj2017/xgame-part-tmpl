@@ -4,7 +4,7 @@
 
 直接浏览以下这些高级主题：
 
-* @see [CdTmpl 约束](./)
+* @see [CdTmpl 约束](./src/test/java/com/game/part/tmpl/CdTmpl.java)
 * @see [BuildingTmpl_1 模板嵌套](./)
 * @see [BuildingTmpl_2 模板嵌套列表](./)
 * @see [ShopTmpl 高级验证](./)
@@ -18,6 +18,7 @@
 
 ```
 public class TEST_XlsxTmplServ {
+    // 应用程序入口
     public static void main(String[] argArr) {
         // 设置 Excel 文件的存放目录
         XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx";

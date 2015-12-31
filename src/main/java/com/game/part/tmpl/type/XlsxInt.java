@@ -14,6 +14,9 @@ import com.game.part.util.Assert;
  * 
  */
 public class XlsxInt extends BasicTypeCol<Integer> {
+    /** 0 值 */
+    private static final int ZERO = 0;
+
     /**
      * 类默认构造器
      *
@@ -89,7 +92,7 @@ public class XlsxInt extends BasicTypeCol<Integer> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxInt createByInterval(boolean nullable, Integer defaultVal, int minVal, int maxVal) {
+    public static XlsxInt createByInterval(boolean nullable, int defaultVal, int minVal, int maxVal) {
         // 创建 XlsxInt 对象
         return new XlsxInt(nullable, defaultVal) {
             @Override
@@ -122,11 +125,11 @@ public class XlsxInt extends BasicTypeCol<Integer> {
     }
 
     /**
-     * @see #createByInterval(boolean, Integer, int, int)
+     * @see #createByInterval(boolean, int, int, int)
      */
     public static XlsxInt createByInterval(boolean nullable, int minVal, int maxVal) {
         return createByInterval(
-            nullable, null, minVal, maxVal
+            nullable, ZERO, minVal, maxVal
         );
     }
 
@@ -142,18 +145,18 @@ public class XlsxInt extends BasicTypeCol<Integer> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxInt createByMin(boolean nullable, Integer defaultVal, int minVal) {
+    public static XlsxInt createByMin(boolean nullable, int defaultVal, int minVal) {
         return createByInterval(
             nullable, defaultVal, minVal, Integer.MAX_VALUE
         );
     }
 
     /**
-     * @see #createByMin(boolean, Integer, int)
+     * @see #createByMin(boolean, int, int)
      */
     public static XlsxInt createByMin(boolean nullable, int minVal) {
         return createByInterval(
-            nullable, null, minVal, Integer.MAX_VALUE
+            nullable, ZERO, minVal, Integer.MAX_VALUE
         );
     }
 
@@ -169,18 +172,18 @@ public class XlsxInt extends BasicTypeCol<Integer> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxInt createByMax(boolean nullable, Integer defaultVal, int maxVal) {
+    public static XlsxInt createByMax(boolean nullable, int defaultVal, int maxVal) {
         return createByInterval(
             nullable, defaultVal, Integer.MIN_VALUE, maxVal
         );
     }
 
     /**
-     * @see #createByMax(boolean, Integer, int)
+     * @see #createByMax(boolean, int, int)
      */
     public static XlsxInt createByMax(boolean nullable, int maxVal) {
         return createByInterval(
-            nullable, null, Integer.MIN_VALUE, maxVal
+            nullable, ZERO, Integer.MIN_VALUE, maxVal
         );
     }
 
@@ -196,7 +199,7 @@ public class XlsxInt extends BasicTypeCol<Integer> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxInt createByEnum(boolean nullable, Integer defaultVal, int[] enumIntArr) {
+    public static XlsxInt createByEnum(boolean nullable, int defaultVal, int[] enumIntArr) {
         // 断言参数不为空
         Assert.notNullOrEmpty(enumIntArr, "enumIntArr");
         // 创建 XlsxInt 对象
@@ -241,11 +244,11 @@ public class XlsxInt extends BasicTypeCol<Integer> {
     }
 
     /**
-     * @see #createByEnum(boolean, Integer, int[])
+     * @see #createByEnum(boolean, int, int[])
      */
     public static XlsxInt createByEnum(boolean nullable, int[] enumIntArr) {
         return createByEnum(
-            nullable, null, enumIntArr
+            nullable, ZERO, enumIntArr
         );
     }
 }
