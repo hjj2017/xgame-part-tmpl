@@ -10,6 +10,7 @@
 * @see [ShopItemTmpl 验证器](./src/test/java/com/game/part/tmpl/ShopItemTmpl.java)
 * @see [SysLangTmpl 多语言变量 ${lang}](./src/test/java/com/game/part/tmpl/SysLangTmpl.java)
 * @see [HeroTmpl 多语言字段](./src/test/java/com/game/part/tmpl/HeroTmpl.java)
+* @see [CityTmpl 复合键](./src/test/java/com/game/part/tmpl/CityTmpl.java)
 
 ----
 
