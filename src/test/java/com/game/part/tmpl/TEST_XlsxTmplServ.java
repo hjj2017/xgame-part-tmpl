@@ -1,16 +1,18 @@
 package com.game.part.tmpl;
 
 import java.util.List;
-import java.util.Objects;
 
 import com.game.part.tmpl.type.AbstractXlsxTmpl;
+import org.junit.Test;
 
 public class TEST_XlsxTmplServ {
-    // 应用程序入口
-    public static void main(String[] argArr) {
+    @Test
+    public void mainTest() {
         // 设置 Excel 文件的存放目录
         XlsxTmplServ.OBJ._xlsxFileDir = ClassLoader.getSystemResource(".").getPath() + "/xlsx";
-        XlsxTmplServ.OBJ._lang = "en_US";
+        // 设置为英语
+        // XlsxTmplServ.OBJ._lang = "en_US";
+        XlsxTmplServ.OBJ._debugClazzToDir = "/D:/Temp_Test";
 
         // 模版类数组
         Class<?>[] tmplClazzArr = {
@@ -21,6 +23,7 @@ public class TEST_XlsxTmplServ {
             ShopItemTmpl.class,
             SysLangTmpl.class,
             HeroTmpl.class,
+            CityTmpl.class,
         };
 
         for (Class<?> tmplClazz : tmplClazzArr) {
@@ -41,5 +44,8 @@ public class TEST_XlsxTmplServ {
         // 获取所有穿戴位置 = 1 的模板列表
         List<EquipTmpl> tmplObjList = EquipTmpl._wearPosMap.get(1);
         System.out.println(tmplObjList.size());
+
+        Object obj = CityTmpl._countryAndTypeMap.get(CityTmpl.getCountryAndTypeInt(10011, 2));
+        System.out.println(obj);
     }
 }

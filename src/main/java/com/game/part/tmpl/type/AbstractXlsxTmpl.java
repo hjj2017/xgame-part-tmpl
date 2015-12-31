@@ -37,6 +37,54 @@ public abstract class AbstractXlsxTmpl extends AbstractXlsxCol {
         }
     }
 
+    /** @see #packOneToOne(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToOne(
+        int intKey, AbstractXlsxTmpl objVal, Map<Object, AbstractXlsxTmpl> targetMap) {
+        packOneToOne(new Integer(intKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToOne(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToOne(
+        short shortKey, AbstractXlsxTmpl objVal, Map<Object, AbstractXlsxTmpl> targetMap) {
+        packOneToOne(new Short(shortKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToOne(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToOne(
+        long longKey, AbstractXlsxTmpl objVal, Map<Object, AbstractXlsxTmpl> targetMap) {
+        packOneToOne(new Long(longKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToOne(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToOne(
+        char charKey, AbstractXlsxTmpl objVal, Map<Object, AbstractXlsxTmpl> targetMap) {
+        packOneToOne(new Character(charKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToOne(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToOne(
+        float floatKey, AbstractXlsxTmpl objVal, Map<Object, AbstractXlsxTmpl> targetMap) {
+        packOneToOne(new Float(floatKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToOne(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToOne(
+        double doubleKey, AbstractXlsxTmpl objVal, Map<Object, AbstractXlsxTmpl> targetMap) {
+        packOneToOne(new Double(doubleKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToOne(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToOne(
+        byte byteKey, AbstractXlsxTmpl objVal, Map<Object, AbstractXlsxTmpl> targetMap) {
+        packOneToOne(new Byte(byteKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToOne(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToOne(
+        boolean boolKey, AbstractXlsxTmpl objVal, Map<Object, AbstractXlsxTmpl> targetMap) {
+        packOneToOne(new Boolean(boolKey), objVal, targetMap);
+    }
+
     /**
      * 打包一对一数据到目标字典
      *
@@ -76,6 +124,54 @@ public abstract class AbstractXlsxTmpl extends AbstractXlsxCol {
         }
 
         targetMap.put(realKey, objVal);
+    }
+
+    /** @see #packOneToMany(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToMany(
+        int intKey, AbstractXlsxTmpl objVal, Map<Object, List<AbstractXlsxTmpl>> targetMap) {
+        packOneToMany(new Integer(intKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToMany(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToMany(
+        short shortKey, AbstractXlsxTmpl objVal, Map<Object, List<AbstractXlsxTmpl>> targetMap) {
+        packOneToMany(new Short(shortKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToMany(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToMany(
+        long longKey, AbstractXlsxTmpl objVal, Map<Object, List<AbstractXlsxTmpl>> targetMap) {
+        packOneToMany(new Long(longKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToMany(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToMany(
+        char charKey, AbstractXlsxTmpl objVal, Map<Object, List<AbstractXlsxTmpl>> targetMap) {
+        packOneToMany(new Character(charKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToMany(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToMany(
+        float floatKey, AbstractXlsxTmpl objVal, Map<Object, List<AbstractXlsxTmpl>> targetMap) {
+        packOneToMany(new Float(floatKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToMany(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToMany(
+        double doubleKey, AbstractXlsxTmpl objVal, Map<Object, List<AbstractXlsxTmpl>> targetMap) {
+        packOneToMany(new Double(doubleKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToMany(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToMany(
+        byte byteKey, AbstractXlsxTmpl objVal, Map<Object, List<AbstractXlsxTmpl>> targetMap) {
+        packOneToMany(new Byte(byteKey), objVal, targetMap);
+    }
+
+    /** @see #packOneToMany(Object, AbstractXlsxTmpl, Map) */
+    public static void packOneToMany(
+        boolean boolKey, AbstractXlsxTmpl objVal, Map<Object, List<AbstractXlsxTmpl>> targetMap) {
+        packOneToMany(new Boolean(boolKey), objVal, targetMap);
     }
 
     /**

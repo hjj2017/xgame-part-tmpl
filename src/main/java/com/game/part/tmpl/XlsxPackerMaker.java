@@ -163,7 +163,7 @@ final class XlsxPackerMaker {
         // 将模板对象添加到字典
         buildMapText(byClazz, codeCtx);
         // 函数脚
-        codeCtx._codeText.append("}\n;");
+        codeCtx._codeText.append("}\n");
     }
 
     /**

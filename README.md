@@ -2,7 +2,7 @@
 
 在游戏项目中，用于读取 Excel 2007 格式文件，支持简单校验和多语言。该项目是 Xgame 项目的一个子项目！
 
-直接浏览以下这些高级主题：
+直接浏览以下这些高级特性：
 
 * @see [CdTmpl 约束](./src/test/java/com/game/part/tmpl/CdTmpl.java)
 * @see [BuildingTmpl_1 模板嵌套](./src/test/java/com/game/part/tmpl/BuildingTmpl_0.java)
@@ -23,7 +23,7 @@ public class TEST_XlsxTmplServ {
     public static void main(String[] argArr) {
         // 设置 Excel 文件的存放目录
         XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx";
-        // // 设置为英语
+        // 设置为英语
         // XlsxTmplServ.OBJ._lang = "en_US";
         
         // 模版类数组
