@@ -53,6 +53,41 @@ public class XlsxMultiLang extends AbstractXlsxCol {
         this._langStr = null;
     }
 
+    /**
+     * 获取原文
+     *
+     * @return
+     *
+     */
+    public String getOrigStr() {
+        return this._origStr;
+    }
+
+    /**
+     * 获取译文
+     *
+     * @return
+     *
+     */
+    public String getLangStr() {
+        return this._langStr;
+    }
+
+    /**
+     * objVal 不能为空, 但如果真为空值, 则自动创建
+     *
+     * @param objVal
+     * @return
+     *
+     */
+    public static XlsxMultiLang ifNullThenCreate(XlsxMultiLang objVal) {
+        if (objVal == null) {
+            return new XlsxMultiLang();
+        }
+
+        return objVal;
+    }
+
     @Override
     protected void readImpl(XSSFRowReadStream stream) {
         if (stream == null) {

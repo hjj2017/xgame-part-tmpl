@@ -210,6 +210,15 @@ final class ReadHelperMaker {
                     .append(".ifNullThenCreate(O.")
                     .append(f.getName())
                     .append(");\n");
+            } else if (f.getType().equals(XlsxMultiLang.class)) {
+                // 如果是多语言字段,
+                // 生成如下代码 :
+                // tmplObj._name = XlsxMultiLang.ifNullThenCreate(tmplObj._name);
+                codeCtx._codeText.append("O.")
+                    .append(f.getName())
+                    .append(" = XlsxMultiLang.ifNullThenCreate(O.")
+                    .append(f.getName())
+                    .append(");\n");
             } else if (f.getType().equals(XlsxArrayList.class)) {
                 // 获取元素数量注解
                 ElementNum elemNumAnno = f.getAnnotation(ElementNum.class);

@@ -1,5 +1,8 @@
 package com.game.part.tmpl;
 
+import java.util.List;
+
+import com.game.part.tmpl.type.AbstractXlsxTmpl;
 import org.junit.Test;
 
 /**
@@ -12,12 +15,33 @@ import org.junit.Test;
 public class TEST_XlsxTmplServ {
     @Test
     public void mainTest() {
+        // 模版类数组
+        Class<?>[] tmplClazzArr = {
+            BuildingTmpl.class,
+        };
+
         // 设置 Excel 文件路径
-        XlsxTmplServ.OBJ._xlsxFileDir = "";
-        // 加载 Test 模版
-        XlsxTmplServ.OBJ.loadTmplData(TestTmpl.class);
-        XlsxTmplServ.OBJ.packUp(TestTmpl.class);
+        XlsxTmplServ.OBJ._xlsxFileDir = ClassLoader.getSystemResource("./").getPath() + "/xlsx/val";
+        XlsxTmplServ.OBJ._multiLangDir = ClassLoader.getSystemResource("./").getPath() + "/xlsx/i18n/en_US";
+
+        for (Class<?> tmplClazz : tmplClazzArr) {
+            // 强制转型
+            Class<AbstractXlsxTmpl> c = (Class<AbstractXlsxTmpl>)tmplClazz;
+            // 加载 Test 模版
+            XlsxTmplServ.OBJ.loadTmplData(c);
+            XlsxTmplServ.OBJ.packUp(c);
+        }
+
         // 验证所有数据
         XlsxTmplServ.OBJ.validateAll();
+
+        List<BuildingTmpl> tmplObjList = (List<BuildingTmpl>)XlsxTmplServ.OBJ._objListMap.get(BuildingTmpl.class);
+
+        for (BuildingTmpl tmplObj : tmplObjList) {
+            System.out.print(tmplObj._name.getOrigStr());
+            System.out.print(" = ");
+            System.out.print(tmplObj._name.getLangStr());
+            System.out.println();
+        }
     }
 }
