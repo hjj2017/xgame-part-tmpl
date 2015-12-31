@@ -1,5 +1,6 @@
 package com.game.part.tmpl.type;
 
+import java.io.File;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,13 +65,14 @@ public class XlsxMultiLang extends AbstractXlsxCol {
     }
 
     /**
-     * 获取译文
+     * 获取译文,
+     * 注意: 如果译文为空, 则返回原文
      *
      * @return
      *
      */
     public String getLangStr() {
-        return this._langStr;
+        return this._langStr == null ? this._origStr : this._langStr;
     }
 
     /**
@@ -99,13 +101,8 @@ public class XlsxMultiLang extends AbstractXlsxCol {
         // 读取原文
         this._origStr = stream.readStr();
 
-        if (XlsxTmplServ.OBJ._multiLangDir == null ||
-            XlsxTmplServ.OBJ._multiLangDir.isEmpty()) {
-            // 如果没有设置多语言资源目录,
-            // 那么忽略翻译!
-            // 令译文 = 原文
-            this._langStr = this._origStr;
-        } else {
+        if (XlsxTmplServ.OBJ._multiLangDir != null &&
+            XlsxTmplServ.OBJ._multiLangDir.isEmpty() == false) {
             // 获取字典并获取译文
             Map<String, String> dict = getDict(this.getXlsxFileName());
             this._langStr = dict.get(this._origStr);
@@ -136,13 +133,22 @@ public class XlsxMultiLang extends AbstractXlsxCol {
 
         // 多语言文件
         String multiLangAbsFileName = XlsxTmplServ.OBJ._multiLangDir + "/" + xlsxFileName;
-        // 从多语言文件中获取页签
-        XSSFSheet xlsxSheet = XSSFUtil.getWorkSheet(
-            multiLangAbsFileName, 0
-        );
 
-        // 创建内置字典
-        innerDict = createInnerDict(xlsxSheet);
+        if ((new File(multiLangAbsFileName)).exists()) {
+            // 如果多语言文件存在,
+            // 从多语言文件中获取页签
+            XSSFSheet xlsxSheet = XSSFUtil.getWorkSheet(
+                multiLangAbsFileName, 0
+            );
+
+            // 创建内置字典
+            innerDict = createInnerDict(xlsxSheet);
+        } else {
+            // 如果多语言文件不存在,
+            // 则使用空字典
+            innerDict = Collections.emptyMap();
+        }
+
         // 将内置字典添加到全局字典中
         _allDict.put(
             xlsxFileName, innerDict
@@ -187,7 +193,9 @@ public class XlsxMultiLang extends AbstractXlsxCol {
             String langStr = XSSFUtil.getStrCellVal(xlsxRow.getCell(1));
 
             if (origStr == null ||
-                origStr.isEmpty()) {
+                origStr.isEmpty() ||
+                langStr == null ||
+                langStr.isEmpty()) {
                 continue;
             }
 

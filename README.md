@@ -4,15 +4,11 @@
 
 直接浏览以下这些高级主题：
 
-@see [BuildingTmpl_1 模板嵌套](./)
-
-@see [BuildingTmpl_2 模板嵌套列表](./)
-
-@see [ShopTmpl 约束](./)
-
-@see [ShopTmpl 高级验证](./)
-
-@see [CdTmpl 多语言](./)
+* @see [CdTmpl 约束](./)
+* @see [BuildingTmpl_1 模板嵌套](./)
+* @see [BuildingTmpl_2 模板嵌套列表](./)
+* @see [ShopTmpl 高级验证](./)
+* @see [SysLangTmpl 多语言](./)
 
 ----
 
