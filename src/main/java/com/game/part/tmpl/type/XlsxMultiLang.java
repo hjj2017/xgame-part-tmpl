@@ -98,9 +98,18 @@ public class XlsxMultiLang extends AbstractXlsxCol {
 
         // 读取原文
         this._origStr = stream.readStr();
-        // 获取字典并获取译文
-        Map<String, String> dict = getDict(this.getXlsxFileName());
-        this._langStr = dict.get(this._origStr);
+
+        if (XlsxTmplServ.OBJ._multiLangDir == null ||
+            XlsxTmplServ.OBJ._multiLangDir.isEmpty()) {
+            // 如果没有设置多语言资源目录,
+            // 那么忽略翻译!
+            // 令译文 = 原文
+            this._langStr = this._origStr;
+        } else {
+            // 获取字典并获取译文
+            Map<String, String> dict = getDict(this.getXlsxFileName());
+            this._langStr = dict.get(this._origStr);
+        }
     }
 
     /**

@@ -1,16 +1,15 @@
 **初始化 XlsxTmplServ**
 
-1、（必选）加载 D 盘 /Temp_Test/Xlsx 目录下的所有 Excel 文件（2007 格式）；
+1、（必选）加载 D 盘 /Temp_Test/xlsx/val 目录下的所有 Excel 文件（2007 格式）；
 
-2、（可选）将系统动态生成的 Java 类源码保存到 D 盘 /Temp_Test/Debug 目录下；
+2、（可选）设置多语言翻译资源目录，多语言翻译资源放置在 D 盘 /Temp_Test/xlsx/i18n/en_US 目录下；
 
-3、（可选）设置环境变量 lang = zh_CN；
+2、（可选）将系统动态生成的 Java 类源码保存到 D 盘 /Temp_Test/debug 目录下；
 
 ```
-XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/Xlsx";
-// XlsxTmplServ.OBJ._debugClazzToDir = "/D:/Temp_Test/Debug";
-// XlsxTmplServ.OBJ._propMap = new HashMap<>();
-// XlsxTmplServ.OBJ._propMap.put("lang", "zh_CN");
+XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx/val";
+// XlsxTmplServ.OBJ._multiLangDir = "/D:/Temp_Test/xlsx/i18n/en_US";
+// XlsxTmplServ.OBJ._debugClazzToDir = "/D:/Temp_Test/debug";
 ```
 
 ----
@@ -30,9 +29,12 @@ Class<?>[] tmplClazzArr = {
 };
 
 for (Class<?> tmplClazz : tmplClazzArr) {
+    // 强制转型
+    Class<AbstractXlsxTmpl> c = (Class<AbstractXlsxTmpl>)tmplClazz;
+    
     // 加载模版类数据并打包
-    XlsxTmplServ.OBJ.loadTmplData(tmplClazz);
-    XlsxTmplServ.OBJ.packUp(tmplClazz);
+    XlsxTmplServ.OBJ.loadTmplData(c);
+    XlsxTmplServ.OBJ.packUp(c);
 }
 
 // 验证所有模版类
@@ -45,17 +47,17 @@ XlsxTmplServ.OBJ.validateAll();
 
 1、从 building.xlsx 文件的第 1 个页签开始读数据；
 
-2、定义建筑 Id，不允许为空值；
+2、\[A 列\] = 建筑 Id，不允许为空值；
 
-3、定义建筑类型，不允许为空值，并且只能是：1、2、3、4，这 4 个值中的一个；
+3、\[B 列\] = 建筑类型，不允许为空值，并且只能是：1、2、3、4，这 4 个值中的一个；
 
-4、定义建筑名称，可以为空值；
+4、\[C 列\] = 建筑名称，可以为空值；
 
-5、定义建筑说明，可以为空值，但最大长度不能超过 200 个字符；
+5、\[D 列\] = 建筑说明，可以为空值，但最大长度不能超过 200 个字符；
 
-6、定义建筑 Id 字典，可以通过建筑 Id 数值取得 BuildingTmpl 对象；
+6、在类中，定义建筑 Id 字典，可以通过建筑 Id 数值取得 BuildingTmpl 对象；
 
-7、定义建筑类型字典，可以通过建筑类型取得 BuildingTmpl 对象列表；
+7、在类中，定义建筑类型字典，可以通过建筑类型取得 BuildingTmpl 对象列表；
 
 ```
 @FromXlsxFile(fileName = "building.xlsx", sheetIndex = 0)
@@ -64,7 +66,7 @@ public class BuildingTmpl extends AbstractXlsxTmpl {
     @OneToOne(groupName = "_Id")
     public XlsxInt _Id = new XlsxInt(false);
     /** 建筑类型 */
-    @OneToMany(groupName = "_Type")
+    @OneToMany(groupName = "_bType")
     public XlsxInt _typeInt = XlsxInt.createByEnum(false, 1, 2, 3, 4);
     /** 建筑名称 */
     public XlsxStr _buildingName;
@@ -85,7 +87,7 @@ public class BuildingTmpl extends AbstractXlsxTmpl {
     @OneToOne(groupName = "_Id")
     public static Map<Integer, BuildingTmpl> _IdMap = new HashMap<>();
     /** 类型字典 */
-    @OneToMany(groupName = "_Type")
+    @OneToMany(groupName = "_bType")
     public static Map<Integer, List<BuildingTmpl>> _typeMap = new HashMap<>();
 }
 ```
@@ -101,7 +103,7 @@ public class BuildingTmpl extends AbstractXlsxTmpl {
 2、根据建筑类型获取 BuildingTmpl 对象列表；
 
 ```
-BuildingTmpl tmplObj = BuildingTmpl._IdMap.get(1);
+BuildingTmpl tmplObj = BuildingTmpl._IdMap.get(1001);
 List<BuildingTmpl> tmplObjList = BuildingTmpl._typeMap.get(1);
 ```
 

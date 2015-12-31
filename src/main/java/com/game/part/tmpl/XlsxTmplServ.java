@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.game.part.tmpl.anno.FromXlsxFile;
+import com.game.part.tmpl.type.AbstractXlsxTmpl;
 import com.game.part.util.Assert;
 import com.game.part.util.Out;
 import com.game.part.util.OutInt;
@@ -97,5 +98,18 @@ public class XlsxTmplServ implements IServ_LoadTmplData, IServ_PackUp, IServ_Val
             outStartFromRowIndex,
             annoXlsxTmpl.startFromRowIndex()
         );
+    }
+
+    /**
+     * 获取模板列表
+     *
+     * @param tmplClazz
+     * @param <T>
+     * @return
+     *
+     */
+    public<T extends AbstractXlsxTmpl> List<T> getTmplObjList(
+        Class<T> tmplClazz) {
+        return (List<T>)this._objListMap.get(tmplClazz);
     }
 }

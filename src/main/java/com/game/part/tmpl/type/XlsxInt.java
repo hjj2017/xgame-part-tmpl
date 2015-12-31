@@ -196,7 +196,7 @@ public class XlsxInt extends BasicTypeCol<Integer> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxInt createByEnum(boolean nullable, Integer defaultVal, int ... enumIntArr) {
+    public static XlsxInt createByEnum(boolean nullable, Integer defaultVal, int[] enumIntArr) {
         // 断言参数不为空
         Assert.notNullOrEmpty(enumIntArr, "enumIntArr");
         // 创建 XlsxInt 对象
@@ -241,9 +241,9 @@ public class XlsxInt extends BasicTypeCol<Integer> {
     }
 
     /**
-     * @see #createByEnum(boolean, Integer, int...)
+     * @see #createByEnum(boolean, Integer, int[])
      */
-    public static XlsxInt createByEnum(boolean nullable, int ... enumIntArr) {
+    public static XlsxInt createByEnum(boolean nullable, int[] enumIntArr) {
         return createByEnum(
             nullable, null, enumIntArr
         );
