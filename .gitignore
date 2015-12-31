@@ -2,6 +2,7 @@
 /target/
 
 *.class
+*.iml
 
 # Package Files #
 *.jar
