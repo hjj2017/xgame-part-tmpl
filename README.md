@@ -109,4 +109,4 @@ tmplObjList = EquipTmpl._wearPosMap.get(1);
 
 @see [TEST_MyEquip.java](./src/test/java/com/game/part/tmpl/TEST_MyEquip.java)
 
-@see [equip.xlsx](./src/test/resources/equip.xlsx)
+@see [equip.xlsx](./src/test/resources/xlsx/val/equip.xlsx)
