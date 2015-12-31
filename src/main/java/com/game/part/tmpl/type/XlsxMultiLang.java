@@ -168,7 +168,7 @@ public class XlsxMultiLang extends AbstractXlsxCol {
         // 创建内置字典
         Map<String, String> innerDict = new HashMap<>();
 
-        for (int i = 1; i < rowNum; i++) {
+        for (int i = 1; i <= rowNum; i++) {
             // 获取一行数据
             XSSFRow xlsxRow = xlsxSheet.getRow(i);
 

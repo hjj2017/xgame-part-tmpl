@@ -42,6 +42,11 @@ public class TEST_XlsxTmplServ {
             System.out.print(" = ");
             System.out.print(tmplObj._name.getLangStr());
             System.out.println();
+
+            System.out.print(tmplObj._desc.getOrigStr());
+            System.out.print(" = ");
+            System.out.print(tmplObj._desc.getLangStr());
+            System.out.println();
         }
     }
 }
