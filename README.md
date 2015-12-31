@@ -10,7 +10,9 @@
 
 2、（可选）设置多语言翻译资源目录，多语言翻译资源放置在 D 盘 /Temp_Test/xlsx/i18n/en_US 目录下；
 
-2、（可选）将系统动态生成的 Java 类源码保存到 D 盘 /Temp_Test/debug 目录下；
+3、（可选）将系统动态生成的 Java 类源码保存到 D 盘 /Temp_Test/debug 目录下；
+
+@see [TEST_MyEquip.java](./src/test/java/com/game/part/tmpl/TEST_MyEquip.java)；
 
 ```
 XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx/val";
@@ -27,6 +29,8 @@ XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx/val";
 1、加载 BuildingTmpl 类、ShopTmpl 类和 SysLangTmpl 类；
 
 2、验证所有模版类；
+
+@see [TEST_MyEquip.java](./src/test/java/com/game/part/tmpl/TEST_MyEquip.java)；
 
 ```
 // 模版类数组
@@ -70,9 +74,9 @@ XlsxTmplServ.OBJ.validateAll();
 
 7、在类中，定义装备穿戴字典，可以通过穿戴位置取得 EquipTmpl 对象列表；
 
-@see [EquipTmpl.java](./src/test/java/com/game/part/tmpl/EquipTmpl.java)
+@see [EquipTmpl.java](./src/test/java/com/game/part/tmpl/EquipTmpl.java)；
 
-@see [equip.xlsx](./src/test/resources/xlsx/val/equip.xlsx)
+@see [equip.xlsx](./src/test/resources/xlsx/val/equip.xlsx)；
 
 ```
 @FromXlsxFile(fileName = "equip.xlsx")
@@ -109,7 +113,7 @@ public class EquipTmpl extends AbstractXlsxTmpl {
 
 2、根据穿戴位置获取 EquipTmpl 对象列表；
 
-@see [TEST_MyEquip.java](./src/test/java/com/game/part/tmpl/TEST_MyEquip.java)
+@see [TEST_MyEquip.java](./src/test/java/com/game/part/tmpl/TEST_MyEquip.java)；
 
 ```
 // 获取装备模板 11001
@@ -117,7 +121,4 @@ EquipTmpl tmplObj = EquipTmpl._IdMap.get(11001);
 // 获取所有穿戴位置 = 1 的模板列表
 tmplObjList = EquipTmpl._wearPosMap.get(1);
 ```
-
-
-
 
