@@ -34,7 +34,7 @@ XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx/val";
 
 **注册模版类并验证**
 
-1、加载 BuildingTmpl 类、ShopTmpl 类和 SysLangTmpl 类；
+1、加载 EquipTmpl 类并打包；
 
 2、验证所有模版类；
 

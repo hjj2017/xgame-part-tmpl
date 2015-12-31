@@ -55,7 +55,7 @@ public class TEST_MyEquip {
         };
 
         // 设置 Excel 文件路径
-        XlsxTmplServ.OBJ._xlsxFileDir  = getResPath() + "/xlsx/val";
+        XlsxTmplServ.OBJ._xlsxFileDir  = getResPath() + "/xlsx";
 //      // 设置多语言目录
 //      // 这里不需要进行多语言翻译
 //      XlsxTmplServ.OBJ._multiLangDir = getResPath() + "/xlsx/i18n/en_US";
@@ -92,12 +92,14 @@ public class TEST_MyEquip {
      */
     private static String tmplObjToStr(EquipTmpl tmplObj) {
         if (tmplObj == null) {
+            // 如果参数对象为空,
+            // 则直接退出!
             return "";
         }
 
         return MessageFormat.format(
             "Equip Id = {0}, Name = {1}, Desc = {2}, WearPos = {3}",
-            tmplObj._Id.getStrVal(), // 注意: 在这里直接使用 int 数值的字符串形式
+            tmplObj._Id.getStrVal(), // 注意: 在这里可以直接使用 int 数值的字符串形式
             tmplObj._name.getStrVal(),
             tmplObj._desc.getStrVal(),
             tmplObj._wearPos.getIntVal()

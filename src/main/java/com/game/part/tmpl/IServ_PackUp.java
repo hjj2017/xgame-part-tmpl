@@ -21,7 +21,7 @@ interface IServ_PackUp {
      */
     default void packUp(Class<? extends AbstractXlsxTmpl> clazz) {
         // 获取对象列表
-        List<? extends AbstractXlsxTmpl> objList = XlsxTmplServ.OBJ.getObjList(clazz);
+        List<? extends AbstractXlsxTmpl> objList = XlsxTmplServ.OBJ.getTmplObjList(clazz);
 
         if (objList == null ||
             objList.isEmpty()) {

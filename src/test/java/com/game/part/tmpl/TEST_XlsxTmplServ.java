@@ -21,8 +21,7 @@ public class TEST_XlsxTmplServ {
         };
 
         // 设置 Excel 文件路径
-        XlsxTmplServ.OBJ._xlsxFileDir = ClassLoader.getSystemResource("./").getPath() + "/xlsx/val";
-        XlsxTmplServ.OBJ._multiLangDir = ClassLoader.getSystemResource("./").getPath() + "/xlsx/i18n/en_US";
+        XlsxTmplServ.OBJ._xlsxFileDir = ClassLoader.getSystemResource("./").getPath() + "/xlsx";
 
         for (Class<?> tmplClazz : tmplClazzArr) {
             // 强制转型

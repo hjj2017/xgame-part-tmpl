@@ -101,8 +101,8 @@ public class XlsxMultiLang extends AbstractXlsxCol {
         // 读取原文
         this._origStr = stream.readStr();
 
-        if (XlsxTmplServ.OBJ._multiLangDir != null &&
-            XlsxTmplServ.OBJ._multiLangDir.isEmpty() == false) {
+        if (XlsxTmplServ.OBJ._lang != null &&
+            XlsxTmplServ.OBJ._lang.isEmpty() == false) {
             // 获取字典并获取译文
             Map<String, String> dict = getDict(this.getXlsxFileName());
             this._langStr = dict.get(this._origStr);
@@ -132,7 +132,7 @@ public class XlsxMultiLang extends AbstractXlsxCol {
         }
 
         // 多语言文件
-        String multiLangAbsFileName = XlsxTmplServ.OBJ._multiLangDir + "/" + xlsxFileName;
+        String multiLangAbsFileName = XlsxTmplServ.OBJ._xlsxFileDir + "/i18n/" + XlsxTmplServ.OBJ._lang + "/" + xlsxFileName;
 
         if ((new File(multiLangAbsFileName)).exists()) {
             // 如果多语言文件存在,

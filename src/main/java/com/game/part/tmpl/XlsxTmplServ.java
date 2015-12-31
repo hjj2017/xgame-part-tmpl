@@ -23,8 +23,8 @@ public class XlsxTmplServ implements IServ_LoadTmplData, IServ_PackUp, IServ_Val
     public static final XlsxTmplServ OBJ = new XlsxTmplServ();
     /** Excel 文件所在目录 */
     public String _xlsxFileDir = null;
-    /** 多语言资源目录 */
-    public String _multiLangDir = null;
+    /** 多语言环境, 默认 = zh_CN 简体中文 */
+    public String _lang = "zh_CN";
 
     /** 输出类文件到目标目录, 主要用于调试 */
     public String _debugClazzToDir = null;
@@ -45,7 +45,7 @@ public class XlsxTmplServ implements IServ_LoadTmplData, IServ_PackUp, IServ_Val
      * @return
      *
      */
-    public <T> List<T> getObjList(Class<T> clazz) {
+    public <T> List<T> getTmplObjList(Class<T> clazz) {
         // 断言参数不为空
         Assert.notNull(clazz, "clazz");
 
@@ -86,8 +86,9 @@ public class XlsxTmplServ implements IServ_LoadTmplData, IServ_PackUp, IServ_Val
             ));
         }
 
-        // 获取文件名
+        // 获取文件名并覆盖多语言变量
         String fileName = annoXlsxTmpl.fileName();
+        fileName = fileName.replace("${lang}", this._lang);
 
         // 获取 Excel 文件名和页签索引
         Out.putVal(outExcelFileName, fileName);
@@ -98,18 +99,5 @@ public class XlsxTmplServ implements IServ_LoadTmplData, IServ_PackUp, IServ_Val
             outStartFromRowIndex,
             annoXlsxTmpl.startFromRowIndex()
         );
-    }
-
-    /**
-     * 获取模板列表
-     *
-     * @param tmplClazz
-     * @param <T>
-     * @return
-     *
-     */
-    public<T extends AbstractXlsxTmpl> List<T> getTmplObjList(
-        Class<T> tmplClazz) {
-        return (List<T>)this._objListMap.get(tmplClazz);
     }
 }
