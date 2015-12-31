@@ -177,8 +177,8 @@ public class BuildingTmpl extends AbstractXlsxTmpl {
 public class ShopTmpl extends AbstractXlsxTmpl {
     /** 商店类型 */
     public XlsxInt _typeInt = new XlsxInt(false);
-	/** 绑定的建筑 Id */
-	public XlsxInt _buildingId = new XlsxInt(false);
+    /** 绑定的建筑 Id */
+    public XlsxInt _buildingId = new XlsxInt(false);
     /** 道具 Id 列表 */
     @ElementNum(5)
     public XlsxArrayList<XlsxInt> _itemIdList = new XlsxArrayList(
@@ -207,16 +207,16 @@ public class Validator_ShopTmpl implements IXlsxValidator<ShopTmpl> {
     @Override
     public void validate(List<ShopTmpl> objList) {
         if (objList == null || 
-		    objList.isEmpty()) {
-		    throw new XlsxTmplError("商店配置表中没有数据");
-		}
+            objList.isEmpty()) {
+            throw new XlsxTmplError("商店配置表中没有数据");
+        }
 
-		objList.forEach(tmplObj -> {
+        objList.forEach(tmplObj -> {
             // 获取商店所绑定的建筑 Id
-		    int buildingId = tmplObj._buildingId.getIntVal();
+            int buildingId = tmplObj._buildingId.getIntVal();
 
-		    if (BuildingTmpl._IdMap.get(buildingId) == null) {
-				throw new XlsxTmplError(tmplObj._buildingId, "未找到 Id = " + buildingId + " 的建筑");
+            if (BuildingTmpl._IdMap.get(buildingId) == null) {
+                throw new XlsxTmplError(tmplObj._buildingId, "未找到 Id = " + buildingId + " 的建筑");
             }
         });
     }

@@ -24,8 +24,7 @@ abstract class BasicTypeCol<T> extends AbstractXlsxCol {
 	 * 
 	 */
 	public BasicTypeCol() {
-		this._nullable  = true;
-		this._objVal = null;
+		this(true, null);
 	}
 
 	/**
@@ -35,8 +34,7 @@ abstract class BasicTypeCol<T> extends AbstractXlsxCol {
 	 * 
 	 */
 	public BasicTypeCol(boolean nullable) {
-		this._nullable = nullable;
-		this._objVal = null;
+		this(nullable, null);
 	}
 
 	/**
@@ -58,8 +56,7 @@ abstract class BasicTypeCol<T> extends AbstractXlsxCol {
 	 * 
 	 */
 	public BasicTypeCol(T objVal) {
-		this._nullable = true;
-		this._objVal = objVal;
+		this(true, objVal);
 	}
 
 	/**
