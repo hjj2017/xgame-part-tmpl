@@ -3,49 +3,36 @@ package com.game.part.tmpl;
 import java.util.List;
 
 import com.game.part.tmpl.type.AbstractXlsxTmpl;
-import org.junit.Test;
 
-/**
- * 模版服务测试类
- *
- * @author hjj2017
- * @since 2015/8/19
- *
- */
 public class TEST_XlsxTmplServ {
-    @Test
-    public void mainTest() {
+    // 应用程序入口
+    public static void main(String[] argArr) {
+        // 设置 Excel 文件的存放目录
+        XlsxTmplServ.OBJ._xlsxFileDir = ClassLoader.getSystemResource(".").getPath() + "/xlsx";
+
         // 模版类数组
         Class<?>[] tmplClazzArr = {
-            BuildingTmpl.class,
+            EquipTmpl.class,
         };
-
-        // 设置 Excel 文件路径
-        XlsxTmplServ.OBJ._xlsxFileDir = ClassLoader.getSystemResource("./").getPath() + "/xlsx";
 
         for (Class<?> tmplClazz : tmplClazzArr) {
             // 强制转型
             Class<AbstractXlsxTmpl> c = (Class<AbstractXlsxTmpl>)tmplClazz;
-            // 加载 Test 模版
+
+            // 加载模版类数据并打包
             XlsxTmplServ.OBJ.loadTmplData(c);
             XlsxTmplServ.OBJ.packUp(c);
         }
 
-        // 验证所有数据
+        // 验证所有模版类
         XlsxTmplServ.OBJ.validateAll();
 
-        List<BuildingTmpl> tmplObjList = (List<BuildingTmpl>)XlsxTmplServ.OBJ._objListMap.get(BuildingTmpl.class);
+        // 获取装备模板 11001
+        EquipTmpl tmplObj = EquipTmpl._IdMap.get(11001);
+        System.out.println(tmplObj._name.getStrVal());
 
-        for (BuildingTmpl tmplObj : tmplObjList) {
-            System.out.print(tmplObj._name.getOrigStr());
-            System.out.print(" = ");
-            System.out.print(tmplObj._name.getLangStr());
-            System.out.println();
-
-            System.out.print(tmplObj._desc.getOrigStr());
-            System.out.print(" = ");
-            System.out.print(tmplObj._desc.getLangStr());
-            System.out.println();
-        }
+        // 获取所有穿戴位置 = 1 的模板列表
+        List<EquipTmpl> tmplObjList = EquipTmpl._wearPosMap.get(1);
+        System.out.println(tmplObjList.size());
     }
 }

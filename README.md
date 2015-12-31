@@ -14,10 +14,10 @@
 
 **快速使用 XlsxTmplServ**
 
-@see [TEST_MyEquip.java](./src/test/java/com/game/part/tmpl/TEST_MyEquip.java)；
+@see [TEST_XlsxTmplServ.java](./src/test/java/com/game/part/tmpl/TEST_XlsxTmplServ.java)；
 
 ```
-public class XlsxTmplServTest {
+public class TEST_XlsxTmplServ {
     public static void main(String[] argArr) {
         // 设置 Excel 文件的存放目录
         XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx";
@@ -41,8 +41,11 @@ public class XlsxTmplServTest {
         
         // 获取装备模板 11001
         EquipTmpl tmplObj = EquipTmpl._IdMap.get(11001);
+        System.out.println(tmplObj._name.getStrVal());
+
         // 获取所有穿戴位置 = 1 的模板列表
         List<EquipTmpl> tmplObjList = EquipTmpl._wearPosMap.get(1);
+        System.out.println(tmplObjList.size());
     }
 }
 ```
