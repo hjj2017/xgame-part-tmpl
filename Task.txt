@@ -1,3 +1,0 @@
-1、修改 README 文件，保持代码的连贯性；
-2、修改 Serv 类，把 FromXlsxFile 注解对属性的支持设置拿回来；
-3、修改 Serv 类，增加 lang 属性；
