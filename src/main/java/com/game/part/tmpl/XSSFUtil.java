@@ -1,5 +1,8 @@
 package com.game.part.tmpl;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -7,9 +10,11 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
+import com.game.part.util.Assert;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * Excel 转换器工具类
@@ -41,6 +46,48 @@ public final class XSSFUtil {
      *
      */
     private XSSFUtil() {
+    }
+
+    /**
+     * 获取页签
+     *
+     * @param xlsxAbsFileName Excel 文件绝对路径
+     * @param sheetIndex 页签索引
+     * @return
+     * @throws XlsxTmplError
+     *
+     */
+    public static XSSFSheet getWorkSheet(String xlsxAbsFileName, int sheetIndex) {
+        // 断言文件名
+        Assert.notNullOrEmpty(
+            xlsxAbsFileName, "excelAbsFileName"
+        );
+        // 断言页签索引
+        Assert.isTrue(
+            sheetIndex >= 0, "sheetIndex"
+        );
+
+        // 记录日志信息
+        XlsxTmplLog.LOG.info("打开文件 " + xlsxAbsFileName);
+
+        try {
+            // 创建输入流
+            InputStream is = new BufferedInputStream(new FileInputStream(xlsxAbsFileName));
+            // 创建工作簿
+            XSSFWorkbook wb = new XSSFWorkbook(is);
+            // 获取并页签
+            return wb.getSheetAt(sheetIndex);
+        } catch (Exception ex) {
+            // 将异常包装为 XlsxTmplError
+            // 设置错误信息
+            String errMsg = MessageFormat.format(
+                "打开文件 {0} 失败",
+                xlsxAbsFileName
+            );
+
+            // 抛出异常!
+            throw new XlsxTmplError(errMsg, ex);
+        }
     }
 
     /**
