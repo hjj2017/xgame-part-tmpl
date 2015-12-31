@@ -24,14 +24,14 @@ import com.game.part.tmpl.type.XlsxMultiLang;
  *  |    |
  *  |    +-- en_US/
  *  |         |
- *  |         +-- hero.xlsx  <-- 英文翻译文件
+ *  |         +-- hero.xlsx  <-- 英文翻译文件, 必须和数据文件同名
  *  |
  *  +-- hero.xlsx  <-- 数据文件
  * </pre>
  *
  * 这个 en_US/hero.xlsx 文件是英文译文文件,
  * 只有两个字段: "原文" 和 "译文"
- * 如果没有译文时, XlsxMultiLang 字段会自动使用原文
+ * 如果没有译文时, XlsxMultiLang 字段会默认使用原文
  *
  * @author hjj2017
  * @since 2016/1/1

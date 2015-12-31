@@ -14,8 +14,18 @@ import com.game.part.tmpl.type.XlsxStr;
 public class FuncTmpl extends AbstractXlsxTmpl {
     /** 功能 Id */
     public XlsxInt _Id;
-    /** 名称 */
+
+    /**
+     * 名称
+     * 可以改成 XlsxMultiLang 类型试试 :),
+     * 修改之后可以使用:
+     * _name.getOrigStr();
+     * _name.getLangStr();
+     * 这两个方法
+     *
+     */
     public XlsxStr _name;
+
     /** 说明 */
     public XlsxStr _desc;
 }

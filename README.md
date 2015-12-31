@@ -9,7 +9,7 @@
 * @see [BuildingTmpl_2 模板嵌套列表](./src/test/java/com/game/part/tmpl/BuildingTmpl_1.java)
 * @see [ShopItemTmpl 验证器](./src/test/java/com/game/part/tmpl/ShopItemTmpl.java)
 * @see [SysLangTmpl 多语言变量 ${lang}](./src/test/java/com/game/part/tmpl/SysLangTmpl.java)
-* @see [HeroTmpl 多语言字段 ${lang}](./src/test/java/com/game/part/tmpl/HeroTmpl.java)
+* @see [HeroTmpl 多语言字段](./src/test/java/com/game/part/tmpl/HeroTmpl.java)
 
 ----
 
