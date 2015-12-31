@@ -2,6 +2,12 @@
 
 在游戏项目中，用于读取 Excel 2007 格式文件，支持简单校验和多语言。该项目是 Xgame 项目的一个子项目！
 
+@see [BuildingTmpl_1 模板嵌套]
+
+@see [BuildingTmpl_2 模板数组]
+
+@see [CdTmpl 多语言]
+
 ----
 
 **初始化 XlsxTmplServ**
@@ -36,9 +42,6 @@ XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx/val";
 // 模版类数组
 Class<?>[] tmplClazzArr = {
     EquipTmpl.class,
-    BuildingTmpl.class, 
-    ShopTmpl.class,
-    SysLangTmpl.class,
 };
 
 for (Class<?> tmplClazz : tmplClazzArr) {
@@ -119,6 +122,6 @@ public class EquipTmpl extends AbstractXlsxTmpl {
 // 获取装备模板 11001
 EquipTmpl tmplObj = EquipTmpl._IdMap.get(11001);
 // 获取所有穿戴位置 = 1 的模板列表
-tmplObjList = EquipTmpl._wearPosMap.get(1);
+List<EquipTmpl> tmplObjList = EquipTmpl._wearPosMap.get(1);
 ```
 
