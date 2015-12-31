@@ -18,6 +18,7 @@ public class TEST_MyEquip {
     public void mainTest() {
         // 先执行初始化
         init();
+
         // 获取目标对象列表
         List<EquipTmpl> tmplObjList = XlsxTmplServ.OBJ.getTmplObjList(EquipTmpl.class);
 
@@ -34,7 +35,7 @@ public class TEST_MyEquip {
 
         System.out.println("----");
 
-        // 获取所有穿戴位置 = 1 的模板
+        // 获取所有穿戴位置 = 1 的模板列表
         tmplObjList = EquipTmpl._wearPosMap.get(1);
 
         for (EquipTmpl curr : tmplObjList) {
@@ -47,7 +48,7 @@ public class TEST_MyEquip {
      * 初始化
      *
      */
-    public static void init() {
+    private static void init() {
         // 模版类数组
         Class<?>[] tmplClazzArr = {
             EquipTmpl.class,
@@ -56,17 +57,19 @@ public class TEST_MyEquip {
         // 设置 Excel 文件路径
         XlsxTmplServ.OBJ._xlsxFileDir  = getResPath() + "/xlsx/val";
 //      // 设置多语言目录
+//      // 这里不需要进行多语言翻译
 //      XlsxTmplServ.OBJ._multiLangDir = getResPath() + "/xlsx/i18n/en_US";
 
         for (Class<?> tmplClazz : tmplClazzArr) {
             // 强制转型
-            Class<AbstractXlsxTmpl> c = (Class<AbstractXlsxTmpl>)tmplClazz;
+            Class<AbstractXlsxTmpl> c = (Class<AbstractXlsxTmpl>) tmplClazz;
             // 加载 Test 模版
             XlsxTmplServ.OBJ.loadTmplData(c);
             XlsxTmplServ.OBJ.packUp(c);
         }
 
 //      // 验证所有数据
+//      // EquipTmpl 类太简单了, 就不需要验证了
 //      XlsxTmplServ.OBJ.validateAll();
     }
 
@@ -76,7 +79,7 @@ public class TEST_MyEquip {
      * @return
      *
      */
-    public static String getResPath() {
+    private static String getResPath() {
         return ClassLoader.getSystemResource("./").getPath();
     }
 
@@ -87,7 +90,7 @@ public class TEST_MyEquip {
      * @return
      *
      */
-    public static String tmplObjToStr(EquipTmpl tmplObj) {
+    private static String tmplObjToStr(EquipTmpl tmplObj) {
         if (tmplObj == null) {
             return "";
         }
