@@ -16,6 +16,7 @@ public class TEST_XlsxTmplServ {
             BuildingTmpl_0.class,
             BuildingTmpl_1.class,
             EquipTmpl.class,
+            ShopItemTmpl.class,
         };
 
         for (Class<?> tmplClazz : tmplClazzArr) {
@@ -36,8 +37,5 @@ public class TEST_XlsxTmplServ {
         // 获取所有穿戴位置 = 1 的模板列表
         List<EquipTmpl> tmplObjList = EquipTmpl._wearPosMap.get(1);
         System.out.println(tmplObjList.size());
-
-        Object obj = XlsxTmplServ.OBJ.getTmplObjList(BuildingTmpl_1.class);
-        System.out.println(obj);
     }
 }
