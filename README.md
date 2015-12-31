@@ -12,51 +12,39 @@
 
 ----
 
-**初始化 XlsxTmplServ**
-
-1、（必选）加载 D 盘 /Temp_Test/xlsx/val 目录下的所有 Excel 文件（2007 格式）；
-
-2、（可选）设置多语言翻译资源目录，多语言翻译资源放置在 D 盘 /Temp_Test/xlsx/i18n/en_US 目录下；
-
-3、（可选）将系统动态生成的 Java 类源码保存到 D 盘 /Temp_Test/debug 目录下；
+**快速使用 XlsxTmplServ**
 
 @see [TEST_MyEquip.java](./src/test/java/com/game/part/tmpl/TEST_MyEquip.java)；
 
 ```
-XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx/val";
-// XlsxTmplServ.OBJ._multiLangDir = "/D:/Temp_Test/xlsx/i18n/en_US";
-// XlsxTmplServ.OBJ._debugClazzToDir = "/D:/Temp_Test/debug";
-```
-
-----
-
-<br />
-
-**注册模版类并验证**
-
-1、加载 EquipTmpl 类并打包；
-
-2、验证所有模版类；
-
-@see [TEST_MyEquip.java](./src/test/java/com/game/part/tmpl/TEST_MyEquip.java)；
-
-```
-// 模版类数组
-Class<?>[] tmplClazzArr = {
-    EquipTmpl.class,
-};
-
-for (Class<?> tmplClazz : tmplClazzArr) {
-    // 强制转型
-    Class<AbstractXlsxTmpl> c = (Class<AbstractXlsxTmpl>)tmplClazz;
-    
-    // 加载模版类数据并打包
-    XlsxTmplServ.OBJ.loadTmplData(c);
-    XlsxTmplServ.OBJ.packUp(c);
+public class XlsxTmplServTest {
+    public static void main(String[] argArr) {
+        // 设置 Excel 文件的存放目录
+        XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx";
+        
+        // 模版类数组
+        Class<?>[] tmplClazzArr = {
+            EquipTmpl.class,
+        };
+        
+        for (Class<?> tmplClazz : tmplClazzArr) {
+            // 强制转型
+            Class<AbstractXlsxTmpl> c = (Class<AbstractXlsxTmpl>)tmplClazz;
+            
+            // 加载模版类数据并打包
+            XlsxTmplServ.OBJ.loadTmplData(c);
+            XlsxTmplServ.OBJ.packUp(c);
+        }
+        
+        // 验证所有模版类
+        XlsxTmplServ.OBJ.validateAll();
+        
+        // 获取装备模板 11001
+        EquipTmpl tmplObj = EquipTmpl._IdMap.get(11001);
+        // 获取所有穿戴位置 = 1 的模板列表
+        List<EquipTmpl> tmplObjList = EquipTmpl._wearPosMap.get(1);
+    }
 }
-
-// 验证所有模版类
-XlsxTmplServ.OBJ.validateAll();
 ```
 
 ----
@@ -106,24 +94,4 @@ public class EquipTmpl extends AbstractXlsxTmpl {
 }
 ```
 
-----
-
-<br />
-
-**使用 EquipTmpl 类**
-
-0、一定先要确保已经调用过：XlsxTmplServ.OBJ.packUp(...); 这一步；
-
-1、根据装备 Id 获取 EquipTmpl 对象；
-
-2、根据穿戴位置获取 EquipTmpl 对象列表；
-
-@see [TEST_MyEquip.java](./src/test/java/com/game/part/tmpl/TEST_MyEquip.java)；
-
-```
-// 获取装备模板 11001
-EquipTmpl tmplObj = EquipTmpl._IdMap.get(11001);
-// 获取所有穿戴位置 = 1 的模板列表
-List<EquipTmpl> tmplObjList = EquipTmpl._wearPosMap.get(1);
-```
 
