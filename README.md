@@ -7,8 +7,9 @@
 * @see [CdTmpl 约束](./src/test/java/com/game/part/tmpl/CdTmpl.java)
 * @see [BuildingTmpl_1 模板嵌套](./src/test/java/com/game/part/tmpl/BuildingTmpl_0.java)
 * @see [BuildingTmpl_2 模板嵌套列表](./src/test/java/com/game/part/tmpl/BuildingTmpl_1.java)
-* @see [ShopTmpl 高级验证](./)
-* @see [SysLangTmpl 多语言](./)
+* @see [ShopItemTmpl 验证器](./src/test/java/com/game/part/tmpl/ShopItemTmpl.java)
+* @see [SysLangTmpl 多语言变量 ${lang}](./src/test/java/com/game/part/tmpl/SysLangTmpl.java)
+* @see [HeroTmpl 多语言字段 ${lang}](./src/test/java/com/game/part/tmpl/HeroTmpl.java)
 
 ----
 
@@ -22,10 +23,17 @@ public class TEST_XlsxTmplServ {
     public static void main(String[] argArr) {
         // 设置 Excel 文件的存放目录
         XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx";
+        // // 设置为英语
+        // XlsxTmplServ.OBJ._lang = "en_US";
         
         // 模版类数组
         Class<?>[] tmplClazzArr = {
+            CdTmpl.class,
+            BuildingTmpl_0.class,
+            BuildingTmpl_1.class,
             EquipTmpl.class,
+            ShopItemTmpl.class,
+            HeroTmpl.class,
         };
         
         for (Class<?> tmplClazz : tmplClazzArr) {

@@ -1,6 +1,7 @@
 package com.game.part.tmpl;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.game.part.tmpl.type.AbstractXlsxTmpl;
 
@@ -9,6 +10,7 @@ public class TEST_XlsxTmplServ {
     public static void main(String[] argArr) {
         // 设置 Excel 文件的存放目录
         XlsxTmplServ.OBJ._xlsxFileDir = ClassLoader.getSystemResource(".").getPath() + "/xlsx";
+        XlsxTmplServ.OBJ._lang = "en_US";
 
         // 模版类数组
         Class<?>[] tmplClazzArr = {
@@ -17,6 +19,8 @@ public class TEST_XlsxTmplServ {
             BuildingTmpl_1.class,
             EquipTmpl.class,
             ShopItemTmpl.class,
+            SysLangTmpl.class,
+            HeroTmpl.class,
         };
 
         for (Class<?> tmplClazz : tmplClazzArr) {
