@@ -1,6 +1,7 @@
 package com.game.part.tmpl.type;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.text.MessageFormat;
 import java.util.HashSet;
 import java.util.List;
@@ -162,10 +163,11 @@ final class ReadHelperMaker {
         codeCtx._codeText.append("public void readImpl(AbstractXlsxTmpl tmplObj, XSSFRowReadStream stream) {\n");
         // 增加空值判断
         codeCtx._codeText.append("if (tmplObj == null || stream == null) { return; }\n");
+
         // 定义大 O 参数避免转型问题
-        codeCtx._codeText.append(byClazz.getSimpleName())
+        codeCtx._codeText.append(byClazz.getName())
             .append(" O = (")
-            .append(byClazz.getSimpleName())
+            .append(byClazz.getName())
             .append(")tmplObj;\n");
 
         // 构建字段赋值文本
@@ -199,7 +201,13 @@ final class ReadHelperMaker {
         }
 
         fl.forEach(f -> {
-            if (ClazzUtil.isDrivedClazz(f.getType(), BasicTypeCol.class)) {
+            if (f.isSynthetic() &&
+                Modifier.isFinal(f.getModifiers()) &&
+                f.getName().startsWith("this$")) {
+                // 可能是临时的 this 指针,
+                // 直接跳过即可
+                return;
+            } else if (ClazzUtil.isDrivedClazz(f.getType(), BasicTypeCol.class)) {
                 // 如果是普通字段或者是模板字段,
                 // 生成如下代码 :
                 // tmplObj._funcId = XlsxInt.ifNullThenCreate(tmplObj._funcId);

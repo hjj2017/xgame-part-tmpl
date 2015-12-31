@@ -1,6 +1,7 @@
 package com.game.part.tmpl;
 
 import com.game.part.tmpl.anno.ElementNum;
+import com.game.part.tmpl.anno.FromXlsxFile;
 import com.game.part.tmpl.type.AbstractXlsxTmpl;
 import com.game.part.tmpl.type.XlsxArrayList;
 import com.game.part.tmpl.type.XlsxInt;
@@ -13,6 +14,7 @@ import com.game.part.tmpl.type.XlsxStr;
  * @since 2015/12/31
  *
  */
+@FromXlsxFile(fileName = "building_1.xlsx")
 public class BuildingTmpl_1 extends AbstractXlsxTmpl {
     /** Id */
     public XlsxInt _Id = new XlsxInt(false);

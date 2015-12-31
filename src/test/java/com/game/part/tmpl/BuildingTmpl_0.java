@@ -13,7 +13,7 @@ import com.game.part.tmpl.type.XlsxStr;
  * @since 2015/8/19
  *
  */
-@FromXlsxFile(fileName = "building.xlsx")
+@FromXlsxFile(fileName = "building_0.xlsx")
 public class BuildingTmpl_0 extends AbstractXlsxTmpl {
     /** Id */
     public XlsxInt _Id = new XlsxInt(false);
