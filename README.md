@@ -2,11 +2,17 @@
 
 在游戏项目中，用于读取 Excel 2007 格式文件，支持简单校验和多语言。该项目是 Xgame 项目的一个子项目！
 
-@see [BuildingTmpl_1 模板嵌套]
+直接浏览以下这些高级主题：
 
-@see [BuildingTmpl_2 模板数组]
+@see [BuildingTmpl_1 模板嵌套](./)
 
-@see [CdTmpl 多语言]
+@see [BuildingTmpl_2 模板嵌套列表](./)
+
+@see [ShopTmpl 约束](./)
+
+@see [ShopTmpl 高级验证](./)
+
+@see [CdTmpl 多语言](./)
 
 ----
 
