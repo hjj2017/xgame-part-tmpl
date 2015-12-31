@@ -25,7 +25,7 @@ public class BuildingTmpl_1 extends AbstractXlsxTmpl {
      * 且数组长度 = 3,
      * 所以将对应 Excel 表中的 C、D、E、F、G、H、I、J、K 这 9 列
      *
-     * 注意: 建筑的第一个功能绝对不能为空,
+     * 注意: 建筑的第 1 个功能绝对不能为空,
      * 也就是说 C 列绝对不能为空!
      * D 到 K 这几列可以为空...
      *
