@@ -20,6 +20,8 @@ XlsxTmplServ.OBJ._xlsxFileDir = "/D:/Temp_Test/xlsx/val";
 
 ----
 
+<br />
+
 **注册模版类并验证**
 
 1、加载 BuildingTmpl 类、ShopTmpl 类和 SysLangTmpl 类；
@@ -50,6 +52,8 @@ XlsxTmplServ.OBJ.validateAll();
 
 ----
 
+<br />
+
 **EquipTmpl 类**
 
 1、从 equip.xlsx 文件的第 1 个页签开始读数据；
@@ -65,6 +69,10 @@ XlsxTmplServ.OBJ.validateAll();
 6、在类中，定义装备 Id 字典，可以通过装备 Id 数值取得 EquipTmpl 对象；
 
 7、在类中，定义装备穿戴字典，可以通过穿戴位置取得 EquipTmpl 对象列表；
+
+@see [EquipTmpl.java](./src/test/java/com/game/part/tmpl/EquipTmpl.java)
+
+@see [equip.xlsx](./src/test/resources/xlsx/val/equip.xlsx)
 
 ```
 @FromXlsxFile(fileName = "equip.xlsx")
@@ -88,7 +96,10 @@ public class EquipTmpl extends AbstractXlsxTmpl {
     public static Map<Integer, List<EquipTmpl>> _wearPosMap = new HashMap<>();
 }
 ```
+
 ----
+
+<br />
 
 **使用 EquipTmpl 类**
 
@@ -98,6 +109,8 @@ public class EquipTmpl extends AbstractXlsxTmpl {
 
 2、根据穿戴位置获取 EquipTmpl 对象列表；
 
+@see [TEST_MyEquip.java](./src/test/java/com/game/part/tmpl/TEST_MyEquip.java)
+
 ```
 // 获取装备模板 11001
 EquipTmpl tmplObj = EquipTmpl._IdMap.get(11001);
@@ -105,9 +118,6 @@ EquipTmpl tmplObj = EquipTmpl._IdMap.get(11001);
 tmplObjList = EquipTmpl._wearPosMap.get(1);
 ```
 
-@see [EquipTmpl.java](./src/test/java/com/game/part/tmpl/EquipTmpl.java)
 
-@see [TEST_MyEquip.java](./src/test/java/com/game/part/tmpl/TEST_MyEquip.java)
 
-@see [equip.xlsx](./src/test/resources/xlsx/val/equip.xlsx)
 
