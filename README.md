@@ -5,8 +5,8 @@
 直接浏览以下这些高级主题：
 
 * @see [CdTmpl 约束](./src/test/java/com/game/part/tmpl/CdTmpl.java)
-* @see [BuildingTmpl_1 模板嵌套](./)
-* @see [BuildingTmpl_2 模板嵌套列表](./)
+* @see [BuildingTmpl_1 模板嵌套](./src/test/java/com/game/part/tmpl/BuildingTmpl_0.java)
+* @see [BuildingTmpl_2 模板嵌套列表](./src/test/java/com/game/part/tmpl/BuildingTmpl_1.java)
 * @see [ShopTmpl 高级验证](./)
 * @see [SysLangTmpl 多语言](./)
 
