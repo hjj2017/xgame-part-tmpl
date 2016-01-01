@@ -14,10 +14,10 @@
         <argLine>-Dfile.encoding=UTF-8</argLine>
     </properties>
 
-    <url>https://git.oschina.net/afrxprojs/xgame-code_server/</url>
+    <url>https://github.com/hjj2017/xgame-part-tmpl</url>
     <issueManagement>
         <system>OSChina Issue</system>
-        <url>https://git.oschina.net/afrxprojs/xgame-code_server/issues</url>
+        <url>https://github.com/hjj2017/xgame-part-tmpl/issues</url>
     </issueManagement>
 
     <licenses>
@@ -92,6 +92,14 @@
                         <include>**/TEST_*.java</include>
                     </includes>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <outputDirectory>./</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
