@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.game.part.tmpl.anno.FromXlsxFile;
-import com.game.part.tmpl.type.AbstractXlsxTmpl;
-import com.game.part.util.Assert;
 import com.game.part.util.Out;
 import com.game.part.util.OutInt;
 import com.game.part.util.OutStr;
@@ -47,7 +45,7 @@ public class XlsxTmplServ implements IServ_LoadTmplData, IServ_PackUp, IServ_Val
      */
     public <T> List<T> getTmplObjList(Class<T> clazz) {
         // 断言参数不为空
-        Assert.notNull(clazz, "clazz");
+        assert clazz != null : "clazz";
 
         // 获取模板列表
         @SuppressWarnings("unchecked")
@@ -58,10 +56,10 @@ public class XlsxTmplServ implements IServ_LoadTmplData, IServ_PackUp, IServ_Val
     /**
      * 获取 Excel 文件名和页签索引
      *
-     * @param byClazz
-     * @param outExcelFileName
-     * @param outSheetIndex
-     * @param outStartFromRowIndex
+     * @param byClazz 模板类定义
+     * @param outExcelFileName ( 输出参数 ) Excel 文件名称
+     * @param outSheetIndex ( 输出参数 ) Excel 页签索引
+     * @param outStartFromRowIndex ( 输出参数 ) 其实行索引
      * @throws Exception
      *
      */
@@ -71,7 +69,7 @@ public class XlsxTmplServ implements IServ_LoadTmplData, IServ_PackUp, IServ_Val
         OutInt outSheetIndex,
         OutInt outStartFromRowIndex) throws Exception {
         // 断言参数不为空
-        Assert.notNull(byClazz, "byClazz");
+        assert byClazz != null : "byClazz";
 
         // 获取 Excel 模板注解
         FromXlsxFile annoXlsxTmpl = byClazz.getAnnotation(FromXlsxFile.class);

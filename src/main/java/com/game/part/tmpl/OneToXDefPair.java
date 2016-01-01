@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 
 import com.game.part.tmpl.anno.OneToMany;
 import com.game.part.tmpl.anno.OneToOne;
-import com.game.part.util.Assert;
 import com.game.part.util.ClazzUtil;
 
 /**
@@ -42,8 +41,9 @@ final class OneToXDefPair {
      */
     private OneToXDefPair(Member keyDef, Member mapDef, boolean oneToOne) {
         // 断言参数对象不为空
-        Assert.notNull(keyDef, "keyDef");
-        Assert.notNull(mapDef, "mapDef");
+        assert keyDef != null : "keyDef";
+        assert mapDef != null : "mapDef";
+
         // 设置属性值
         this._keyDef = keyDef;
         this._mapDef = mapDef;
@@ -58,7 +58,7 @@ final class OneToXDefPair {
      */
     static void validate(Class<?> clazz) {
         // 断言参数不为空
-        Assert.notNull(clazz, "clazz");
+        assert clazz != null : "clazz";
 
         if (_validatedClazzMap.containsKey(clazz)) {
             // 已经验证过的类,
@@ -86,7 +86,7 @@ final class OneToXDefPair {
      */
     public static List<OneToXDefPair> listAll(Class<?> clazz) {
         // 断言参数不为空
-        Assert.notNull(clazz, "clazz");
+        assert clazz != null : "clazz";
         // 获取已验证的列表
         List<OneToXDefPair_X> xl = _validatedClazzMap.get(clazz);
 
@@ -124,7 +124,7 @@ final class OneToXDefPair {
      */
     private static Map<String, OneToXDefPair_X> collectOneToXAnno(Class<?> clazz) {
         // 断言参数不为空
-        Assert.notNull(clazz, "clazz");
+        assert clazz != null : "clazz";
 
         // 创建辅助字典
         Map<String, OneToXDefPair_X> helpMap = new HashMap<>();

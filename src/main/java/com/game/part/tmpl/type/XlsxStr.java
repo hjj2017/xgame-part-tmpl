@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 import com.game.part.tmpl.XSSFRowReadStream;
 import com.game.part.tmpl.XlsxTmplError;
-import com.game.part.util.Assert;
 
 /**
  * Excel String 字段
@@ -153,7 +152,7 @@ public class XlsxStr extends BasicTypeCol<String> {
      */
     public static XlsxStr createByEnum(boolean nullable, String defaultVal, String[] enumStrArr) {
         // 断言参数不为空
-        Assert.notNullOrEmpty(enumStrArr, "enumStrArr");
+        assert enumStrArr != null && enumStrArr.length > 0 : "enumStrArr";
 
         // 创建 XlsxStr 对象
         return new XlsxStr(nullable, defaultVal) {

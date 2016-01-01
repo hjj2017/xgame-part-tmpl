@@ -20,7 +20,6 @@ import com.game.part.tmpl.XSSFRowReadStream;
 import com.game.part.tmpl.XlsxTmplError;
 import com.game.part.tmpl.XlsxTmplServ;
 import com.game.part.tmpl.anno.ElementNum;
-import com.game.part.util.Assert;
 import com.game.part.util.ClazzUtil;
 import com.game.part.util.FieldUtil;
 
@@ -53,7 +52,7 @@ final class ReadHelperMaker {
      */
     static IReadHelper make(Class<?> byClazz) {
         // 断言参数不为空
-        Assert.notNull(byClazz, "byClazz");
+        assert byClazz != null : "byClazz";
         // 获取帮助者
         IReadHelper helper = _helperMap.get(byClazz);
 
@@ -85,7 +84,7 @@ final class ReadHelperMaker {
      */
     private static Class<IReadHelper> buildHelperClazz(Class<?> byClazz) {
         // 断言参数不为空
-        Assert.notNull(byClazz, "byClazz");
+        assert byClazz != null : "byClazz";
 
         // 设置解析器名称,
         // 在这里使用了 1 个计数器,
@@ -166,8 +165,8 @@ final class ReadHelperMaker {
      */
     private static void buildFuncText(Class<?> byClazz, CodeContext codeCtx) {
         // 断言参数不为空
-        Assert.notNull(byClazz, "byClazz");
-        Assert.notNull(codeCtx, "codeCtx");
+        assert byClazz != null : "byClazz";
+        assert codeCtx != null : "codeCtx";
 
         // 函数头
         codeCtx._codeText.append("public void readImpl(AbstractXlsxTmpl tmplObj, XSSFRowReadStream stream) {\n");
@@ -195,8 +194,8 @@ final class ReadHelperMaker {
      */
     private static void buildFieldAssignText(Class<?> byClazz, CodeContext codeCtx) {
         // 断言参数不为空
-        Assert.notNull(byClazz, "byClazz");
-        Assert.notNull(codeCtx, "codeCtx");
+        assert byClazz != null : "byClazz";
+        assert codeCtx != null : "codeCtx";
 
         //
         // 获取类型为 AbstractXlsxCol 字段,

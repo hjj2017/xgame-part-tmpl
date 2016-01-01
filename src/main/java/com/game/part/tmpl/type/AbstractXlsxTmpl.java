@@ -9,7 +9,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.game.part.tmpl.XSSFRowReadStream;
 import com.game.part.tmpl.XlsxTmplLog;
-import com.game.part.util.Assert;
 
 /**
  * 模板类
@@ -103,7 +102,7 @@ public abstract class AbstractXlsxTmpl extends AbstractXlsxCol {
         }
 
         // 断言参数不为空
-        Assert.notNull(targetMap, "targetMap");
+        assert targetMap != null : "targetMap";
         // 定义真实关键字
         Object realKey = objKey;
 
@@ -192,7 +191,7 @@ public abstract class AbstractXlsxTmpl extends AbstractXlsxCol {
         }
 
         // 断言参数不为空
-        Assert.notNull(targetMap, "targetMap");
+        assert targetMap != null : "targetMap";
         // 定义真实关键字
         Object realKey = objKey;
 

@@ -4,7 +4,6 @@ import java.text.MessageFormat;
 
 import com.game.part.tmpl.XSSFRowReadStream;
 import com.game.part.tmpl.XlsxTmplError;
-import com.game.part.util.Assert;
 
 /**
  * Excel Int 字段
@@ -199,9 +198,12 @@ public class XlsxInt extends BasicTypeCol<Integer> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxInt createByEnum(boolean nullable, int defaultVal, int[] enumIntArr) {
+    public static XlsxInt createByEnum(
+        boolean nullable,
+        int defaultVal,
+        int[] enumIntArr) {
         // 断言参数不为空
-        Assert.notNullOrEmpty(enumIntArr, "enumIntArr");
+        assert enumIntArr != null && enumIntArr.length > 0 : "enumIntArr";
         // 创建 XlsxInt 对象
         return new XlsxInt(nullable, defaultVal) {
             @Override

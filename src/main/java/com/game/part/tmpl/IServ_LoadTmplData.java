@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.List;
 
 import com.game.part.tmpl.type.AbstractXlsxCol;
-import com.game.part.util.Assert;
 import com.game.part.util.OutInt;
 import com.game.part.util.OutStr;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -23,7 +22,7 @@ interface IServ_LoadTmplData {
     /**
      * 加载模板数据
      *
-     * @param byClazz
+     * @param byClazz 模板类定义
      *
      */
     default void loadTmplData(Class<? extends AbstractXlsxCol> byClazz) {
@@ -72,11 +71,11 @@ interface IServ_LoadTmplData {
     /**
      * 构建对象列表
      *
-     * @param byClazz
-     * @param fromSheet
-     * @param startFromRowIndex
-     * @param xlsxFileName
-     * @return
+     * @param byClazz 模板类定义
+     * @param fromSheet Excel 页签
+     * @param startFromRowIndex 其实行索引
+     * @param xlsxFileName Excel 文件名称
+     * @return 返回模板列表
      * @throws Exception
      *
      */
@@ -86,9 +85,9 @@ interface IServ_LoadTmplData {
         int startFromRowIndex,
         String xlsxFileName) throws Exception {
         // 断言参数不为空
-        Assert.notNull(byClazz, "byClazz");
-        Assert.notNull(fromSheet, "fromSheet");
-        Assert.notNull(startFromRowIndex, "startRowIndex");
+        assert byClazz != null : "byClazz";
+        assert fromSheet != null : "fromSheet";
+        assert startFromRowIndex >= 0 : "startRowIndex";
 
         // 获取最后行数
         final int rowCount = fromSheet.getLastRowNum();

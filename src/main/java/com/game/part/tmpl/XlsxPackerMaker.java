@@ -16,7 +16,6 @@ import javassist.CtMethod;
 import javassist.CtNewMethod;
 
 import com.game.part.tmpl.type.AbstractXlsxTmpl;
-import com.game.part.util.Assert;
 
 
 /**
@@ -48,7 +47,7 @@ final class XlsxPackerMaker {
      */
     public static IXlsxPacker make(Class<?> byClazz) {
         // 断言参数不为空
-        Assert.notNull(byClazz, "clazz");
+        assert byClazz != null : "clazz";
         // 获取打包器
         IXlsxPacker packer = _packerMap.get(byClazz);
 
@@ -78,7 +77,7 @@ final class XlsxPackerMaker {
      */
     static Class<IXlsxPacker> buildPackerClazz(Class<?> byClazz) {
         // 断言参数不为空
-        Assert.notNull(byClazz, "byClazz");
+        assert byClazz != null : "byClazz";
 
         // 设置解析器名称,
         // 在这里使用了 1 个计数器,
@@ -157,8 +156,8 @@ final class XlsxPackerMaker {
      */
     private static void buildFuncText(Class<?> byClazz, CodeContext codeCtx) {
         // 断言参数不为空
-        Assert.notNull(byClazz, "byClazz");
-        Assert.notNull(codeCtx, "codeCtx");
+        assert byClazz != null : "byClazz";
+        assert codeCtx != null : "codeCtx";
 
         // 函数头
         codeCtx._codeText.append("public void packUp(AbstractXlsxTmpl tmplObj) {\n");
@@ -185,8 +184,8 @@ final class XlsxPackerMaker {
      */
     private static void buildMapText(Class<?> byClazz, CodeContext codeCtx) {
         // 断言参数不为空
-        Assert.notNull(byClazz, "byClazz");
-        Assert.notNull(codeCtx, "codeCtx");
+        assert byClazz != null : "byClazz";
+        assert codeCtx != null : "codeCtx";
 
         List<OneToXDefPair> pl = OneToXDefPair.listAll(byClazz);
 

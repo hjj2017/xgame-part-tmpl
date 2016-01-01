@@ -3,7 +3,6 @@ package com.game.part.tmpl.type;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.game.part.tmpl.XSSFRowReadStream;
-import com.game.part.util.Assert;
 
 /**
  * Excel 列
@@ -77,7 +76,7 @@ public abstract class AbstractXlsxCol {
      */
     public void readXSSFRow(XSSFRowReadStream stream) {
         // 断言参数不为空
-        Assert.notNull(stream, "stream");
+        assert stream != null : "stream";
         // 设置 Excel 文件名
         this._xlsxFileName = stream.getXlsxFileName();
         // 页签名称

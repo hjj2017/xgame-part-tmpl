@@ -7,8 +7,6 @@ import java.time.LocalTime;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 
-import com.game.part.util.Assert;
-
 /**
  * Excel 行数据流
  * 
@@ -33,7 +31,7 @@ public final class XSSFRowReadStream {
      */
     XSSFRowReadStream(XSSFRow row, String xlsxFileName) {
         // 断言参数不为空
-        Assert.notNull(row, "row");
+        assert row != null : "row";
         // 设置行数据
         this._row = row;
         // 设置文件名

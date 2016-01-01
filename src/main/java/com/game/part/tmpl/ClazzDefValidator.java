@@ -10,7 +10,6 @@ import java.util.List;
 import com.game.part.tmpl.type.AbstractXlsxCol;
 import com.game.part.tmpl.type.AbstractXlsxTmpl;
 import com.game.part.tmpl.type.XlsxArrayList;
-import com.game.part.util.Assert;
 import com.game.part.util.ClazzUtil;
 import com.game.part.util.FieldUtil;
 
@@ -44,12 +43,12 @@ final class ClazzDefValidator {
     /**
      * 验证模板类定义
      *
-     * @param tmplClazz
+     * @param tmplClazz 模板类定义
      *
      */
     static void validate(Class<?> tmplClazz) {
         // 断言参数不为空
-        Assert.notNull(tmplClazz, "tmplClazz");
+        assert tmplClazz != null : "tmplClazz";
 
         if (ClazzUtil.isConcreteDrivedClass(tmplClazz, AbstractXlsxTmpl.class) == false) {
             // 1: 看看 tmplClazz 是不是 AbstractXlsxTmpl 的具体子类,
@@ -88,12 +87,12 @@ final class ClazzDefValidator {
     /**
      * 验证构造器, 看看类上是否有不带参数的默认构造器
      *
-     * @param tmplClazz
+     * @param tmplClazz 模板类定义
      *
      */
     private static void validateCtor(Class<?> tmplClazz) {
         // 断言参数不为空
-        Assert.notNull(tmplClazz, "tmplClazz");
+        assert tmplClazz != null : "tmplClazz";
 
         try {
             // 获取构造器数组
@@ -131,12 +130,12 @@ final class ClazzDefValidator {
     /**
      * 验证字段
      *
-     * @param f
+     * @param f 字段定义
      *
      */
     private static void validateField(Field f) {
         // 断言参数不为空
-        Assert.notNull(f, "f");
+        assert f != null : "f";
 
         // 获取定义这个字段的类
         Class<?> fromClazz = f.getDeclaringClass();
@@ -188,12 +187,12 @@ final class ClazzDefValidator {
     /**
      * 验证 XlsxArrayList 类型的字段
      *
-     * @param f
+     * @param f 字段定义
      *
      */
     private static void validateXlsxArrayListField(Field f) {
         // 断言参数不为空
-        Assert.notNull(f, "f");
+        assert f != null : "f";
         // 获取字段类型
         Class<?> fType = f.getType();
 

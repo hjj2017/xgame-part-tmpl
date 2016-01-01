@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Set;
 
 import com.game.part.tmpl.anno.OneToOne;
-import com.game.part.util.Assert;
 
 /**
  * OneToXDefPair_X
@@ -37,14 +36,14 @@ class OneToXDefPair_X {
     /**
      * 类参数构造器
      *
-     * @param groupName
-     * @param fromClazz
+     * @param groupName 分组名称
+     * @param fromClazz 模板类定义
      *
      */
     OneToXDefPair_X(String groupName, Class<?> fromClazz) {
         // 断言参数不为空
-        Assert.notNull(groupName, "groupName");
-        Assert.notNull(fromClazz, "fromClazz");
+        assert groupName != null : "groupName";
+        assert fromClazz != null : "fromClazz";
         // 设置属性
         this._groupName = groupName;
         this._fromClazz = fromClazz;
@@ -155,7 +154,7 @@ class OneToXDefPair_X {
      */
     private static Member findMember(Set<Member> mSet, boolean findMap) {
         // 断言参数不为空
-        Assert.notNull(mSet, "mSet");
+        assert mSet != null : "mSet";
 
         return mSet.stream().filter(m -> {
             // 定义成员类型

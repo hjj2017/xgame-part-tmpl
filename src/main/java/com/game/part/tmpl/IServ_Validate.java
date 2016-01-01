@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.game.part.tmpl.anno.Validator;
 import com.game.part.tmpl.type.AbstractXlsxTmpl;
-import com.game.part.util.Assert;
 
 /**
  * 验证
@@ -25,12 +24,12 @@ interface IServ_Validate {
     /**
      * 根据类进行验证
      *
-     * @param clazz
+     * @param clazz 模板类定义
      *
      */
     static void validateByClazz(Class<?> clazz) {
         // 断言参数不为空
-        Assert.notNull(clazz, "clazz");
+        assert clazz != null : "clazz";
 
         // 获取对象列表
         @SuppressWarnings("unchecked")

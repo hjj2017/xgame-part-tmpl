@@ -10,7 +10,6 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-import com.game.part.util.Assert;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -57,15 +56,13 @@ public final class XSSFUtil {
      * @throws XlsxTmplError
      *
      */
-    public static XSSFSheet getWorkSheet(String xlsxAbsFileName, int sheetIndex) {
+    public static XSSFSheet getWorkSheet(
+        String xlsxAbsFileName,
+        int sheetIndex) {
         // 断言文件名
-        Assert.notNullOrEmpty(
-            xlsxAbsFileName, "excelAbsFileName"
-        );
+        assert (xlsxAbsFileName != null && !xlsxAbsFileName.isEmpty()) : "excelAbsFileName";
         // 断言页签索引
-        Assert.isTrue(
-            sheetIndex >= 0, "sheetIndex"
-        );
+        assert sheetIndex >= 0 : "sheetIndex";
 
         // 记录日志信息
         XlsxTmplLog.LOG.info("打开文件 " + xlsxAbsFileName);

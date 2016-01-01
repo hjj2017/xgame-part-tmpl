@@ -8,7 +8,6 @@ import java.util.Map;
 import com.game.part.tmpl.XSSFRowReadStream;
 import com.game.part.tmpl.XSSFUtil;
 import com.game.part.tmpl.XlsxTmplServ;
-import com.game.part.util.Assert;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 
@@ -118,9 +117,7 @@ public class XlsxMultiLang extends AbstractXlsxCol {
      */
     private static Map<String, String> getDict(String xlsxFileName) {
         // 断言参数不为空
-        Assert.notNullOrEmpty(
-            xlsxFileName, "xlsxFileName"
-        );
+        assert xlsxFileName != null && !xlsxFileName.isEmpty() : "xlsxFileName";
 
         // 先尝试获取内置字典
         Map<String, String> innerDict = _allDict.get(xlsxFileName);

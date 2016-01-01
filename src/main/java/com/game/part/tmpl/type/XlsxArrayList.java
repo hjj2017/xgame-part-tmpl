@@ -9,7 +9,6 @@ import java.util.ListIterator;
 
 import com.game.part.tmpl.XSSFRowReadStream;
 import com.game.part.tmpl.XlsxTmplError;
-import com.game.part.util.Assert;
 
 /**
  * 列表字段
@@ -73,8 +72,8 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
         Class<T> elementType,
         int elementNum) {
         // 断言参数不为空
-        Assert.notNull(elementType, "elementType");
-        Assert.isTrue(elementNum > 0, "elementNum <= 0");
+        assert elementType != null : "elementType";
+        assert elementNum > 0 : "elementNum <= 0";
 
         if (objVal == null) {
             objVal = new XlsxArrayList<T>();
@@ -105,7 +104,7 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
         } else {
             this._objValList.forEach(o -> {
                 // 断言参数不为空
-                Assert.notNull(o, "o");
+                assert o != null : "o";
                 // 读取行数据
                 o.readXSSFRow(stream);
             });

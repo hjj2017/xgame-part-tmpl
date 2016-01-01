@@ -4,7 +4,6 @@ import java.text.MessageFormat;
 
 import com.game.part.tmpl.XSSFRowReadStream;
 import com.game.part.tmpl.XlsxTmplError;
-import com.game.part.util.Assert;
 
 /**
  * Excel Short 字段
@@ -195,9 +194,12 @@ public class XlsxShort extends BasicTypeCol<Short> {
      * @throws XlsxTmplError
      *
      */
-    public static XlsxShort createByEnum(boolean nullable, short defaultVal, short[] enumShortArr) {
+    public static XlsxShort createByEnum(
+        boolean nullable,
+        short defaultVal,
+        short[] enumShortArr) {
         // 断言参数不为空
-        Assert.notNullOrEmpty(enumShortArr, "enumShortArr");
+        assert enumShortArr != null && enumShortArr.length > 0 : "enumShortArr";
 
         // 创建 XlsxShort 对象
         return new XlsxShort(nullable, defaultVal) {
