@@ -16,6 +16,9 @@ import com.game.part.util.Assert;
  * 
  */
 public class XlsxStr extends BasicTypeCol<String> {
+    /** 空字符串 */
+    private static final String EMPTY_STR = "";
+
     /**
      * 类默认构造器
      *
@@ -124,6 +127,20 @@ public class XlsxStr extends BasicTypeCol<String> {
     }
 
     /**
+     * 创建 Str 字符串对象
+     *
+     * @param nullable
+     * @param enumStrArr
+     * @return
+     *
+     */
+    public static XlsxStr createByEnum(boolean nullable, String[] enumStrArr) {
+        return createByEnum(
+            nullable, EMPTY_STR, enumStrArr
+        );
+    }
+
+    /**
      * 创建 Str 字段对象,
      * 该字段字符串必须是 enumStrArr 数组中的一个!
      * 否则抛出 XlsxTmplError 异常
@@ -134,7 +151,7 @@ public class XlsxStr extends BasicTypeCol<String> {
      * @return
      *
      */
-    public static XlsxStr createByEnum(boolean nullable, String defaultVal, String ... enumStrArr) {
+    public static XlsxStr createByEnum(boolean nullable, String defaultVal, String[] enumStrArr) {
         // 断言参数不为空
         Assert.notNullOrEmpty(enumStrArr, "enumStrArr");
 

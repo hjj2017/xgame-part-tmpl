@@ -13,7 +13,7 @@ public class TEST_XlsxTmplServ {
         // 设置为英语
         // XlsxTmplServ.OBJ._lang = "en_US";
         // 调试目录
-        XlsxTmplServ.OBJ._debugClazzToDir = "/Data/Temp_Test";
+        // XlsxTmplServ.OBJ._debugClazzToDir = "/Data/Temp_Test";
 
         // 模版类数组
         Class<?>[] tmplClazzArr = {
@@ -46,7 +46,8 @@ public class TEST_XlsxTmplServ {
         List<EquipTmpl> tmplObjList = EquipTmpl._wearPosMap.get(1);
         System.out.println(tmplObjList.size());
 
-        Object obj = CityTmpl._countryAndTypeMap.get(CityTmpl.getCountryAndTypeInt(10011, 2));
-        System.out.println(obj);
+        // 获取中国的经济中心城市
+        List<CityTmpl> cityTmplList = CityTmpl._countryAndTypeMap.get("中国 + 经济中心");
+        System.out.println(cityTmplList);
     }
 }
