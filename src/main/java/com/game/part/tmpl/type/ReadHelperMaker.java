@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javassist.ClassPool;
 import javassist.CtClass;
@@ -33,6 +34,8 @@ import com.game.part.util.FieldUtil;
 final class ReadHelperMaker {
     /** 帮助者字典 */
     private static final Map<Class<?>, IReadHelper> _helperMap = new ConcurrentHashMap<>();
+    /** 计数器 */
+    private static AtomicInteger _counter = new AtomicInteger(0);
 
     /**
      * 类默认构造器
@@ -83,10 +86,17 @@ final class ReadHelperMaker {
     private static Class<IReadHelper> buildHelperClazz(Class<?> byClazz) {
         // 断言参数不为空
         Assert.notNull(byClazz, "byClazz");
-        // 设置解析器名称
-        final String helperClazzName = byClazz.getPackage().getName()
-            + ".ReadHelper_"
-            + byClazz.getSimpleName();
+
+        // 设置解析器名称,
+        // 在这里使用了 1 个计数器,
+        // 目的是为了避免 byClazz 为匿名类!
+        // 匿名类的 simpleName 为空
+        final String helperClazzName = MessageFormat.format(
+            "{0}.ReadHelper_{1}_{2}",
+            byClazz.getPackage().getName(),
+            byClazz.getSimpleName(),
+            String.valueOf(_counter.incrementAndGet())
+        );
 
         try {
             // 获取类池

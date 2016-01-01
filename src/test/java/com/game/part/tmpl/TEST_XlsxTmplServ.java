@@ -12,7 +12,8 @@ public class TEST_XlsxTmplServ {
         XlsxTmplServ.OBJ._xlsxFileDir = ClassLoader.getSystemResource(".").getPath() + "/xlsx";
         // 设置为英语
         // XlsxTmplServ.OBJ._lang = "en_US";
-        XlsxTmplServ.OBJ._debugClazzToDir = "/D:/Temp_Test";
+        // 调试目录
+        XlsxTmplServ.OBJ._debugClazzToDir = "/Data/Temp_Test";
 
         // 模版类数组
         Class<?>[] tmplClazzArr = {
