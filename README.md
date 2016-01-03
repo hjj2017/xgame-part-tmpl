@@ -12,6 +12,16 @@
 * @see [HeroTmpl 多语言字段](./src/test/java/com/game/part/tmpl/HeroTmpl.java)
 * @see [CityTmpl 复合键](./src/test/java/com/game/part/tmpl/CityTmpl.java)
 
+浏览 Excel 表：
+
+* @see [cd.xlsx](./src/test/resources/xlsx/equip.xlsx)
+* @see [building_0.xlsx](./src/test/resources/xlsx/building_0.xlsx)
+* @see [building_1.xlsx](./src/test/resources/xlsx/building_1.xlsx)
+* @see [shopItem.xlsx](./src/test/resources/xlsx/shopItem.xlsx)
+* @see [sysLang.xlsx](./src/test/resources/xlsx/i18n/en_US/sysLang.xlsx)
+* @see [hero.xlsx](./src/test/resources/xlsx/hero.xlsx)
+* @see [city.xlsx](./src/test/resources/xlsx/city.xlsx)
+
 ----
 
 **快速使用 XlsxTmplServ**
@@ -81,7 +91,7 @@ public class TEST_XlsxTmplServ {
 
 @see [EquipTmpl.java](./src/test/java/com/game/part/tmpl/EquipTmpl.java)；
 
-@see [equip.xlsx](./src/test/resources/xlsx/val/equip.xlsx)；
+@see [equip.xlsx](./src/test/resources/xlsx/equip.xlsx)；
 
 ```
 @FromXlsxFile(fileName = "equip.xlsx")
