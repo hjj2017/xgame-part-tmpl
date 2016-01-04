@@ -116,4 +116,12 @@ public class EquipTmpl extends AbstractXlsxTmpl {
 }
 ```
 
+----
 
+# 关注我们
+
+QQ 群：327606822
+
+微信公众号：myXgame
+
+![微信公众号](http://git.oschina.net/afrxprojs/xgame-code_server/raw/master/WeiXinGongZhongHao.jpg "myXgame")
