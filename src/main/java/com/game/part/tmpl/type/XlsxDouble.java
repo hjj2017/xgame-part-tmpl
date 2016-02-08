@@ -50,9 +50,9 @@ public class XlsxDouble extends PrimitiveTypeCol<Double> {
     }
 
     @Override
-    protected void readImpl(XSSFRowReadStream stream) {
-        if (stream != null) {
-            super.setObjVal(stream.readDouble());
+    protected void readImpl(XSSFRowReadStream fromStream) {
+        if (fromStream != null) {
+            super.setObjVal(fromStream.readDouble());
         }
     }
 

@@ -56,9 +56,9 @@ public class XlsxShort extends PrimitiveTypeCol<Short> {
     }
 
     @Override
-    protected void readImpl(XSSFRowReadStream stream) {
-        if (stream != null) {
-            super.setObjVal(stream.readShort());
+    protected void readImpl(XSSFRowReadStream fromStream) {
+        if (fromStream != null) {
+            super.setObjVal(fromStream.readShort());
         }
     }
 

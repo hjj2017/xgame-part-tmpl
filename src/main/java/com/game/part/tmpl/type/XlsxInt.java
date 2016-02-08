@@ -56,9 +56,9 @@ public class XlsxInt extends PrimitiveTypeCol<Integer> {
     }
 
     @Override
-    protected void readImpl(XSSFRowReadStream stream) {
-        if (stream != null) {
-            super.setObjVal(stream.readInt());
+    protected void readImpl(XSSFRowReadStream fromStream) {
+        if (fromStream != null) {
+            super.setObjVal(fromStream.readInt());
         }
     }
 

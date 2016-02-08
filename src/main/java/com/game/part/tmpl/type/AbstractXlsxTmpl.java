@@ -19,8 +19,8 @@ import com.game.part.tmpl.XlsxTmplLog;
  */
 public abstract class AbstractXlsxTmpl extends AbstractXlsxCol {
     @Override
-    protected void readImpl(XSSFRowReadStream stream) {
-        if (stream == null) {
+    protected void readImpl(XSSFRowReadStream fromStream) {
+        if (fromStream == null) {
             // 如果数据流为空,
             // 则直接退出!
             return;
@@ -32,7 +32,7 @@ public abstract class AbstractXlsxTmpl extends AbstractXlsxCol {
         if (helper != null) {
             // 如果帮助者不为空,
             // 则读取数据...
-            helper.readImpl(this, stream);
+            helper.readImpl(this, fromStream);
         }
     }
 

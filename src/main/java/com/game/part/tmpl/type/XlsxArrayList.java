@@ -96,8 +96,8 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
     }
 
     @Override
-    protected void readImpl(XSSFRowReadStream stream) {
-        if (stream == null ||
+    protected void readImpl(XSSFRowReadStream fromStream) {
+        if (fromStream == null ||
             this._objValList == null ||
             this._objValList.isEmpty()) {
             return;
@@ -106,7 +106,7 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
                 // 断言参数不为空
                 assert o != null : "o";
                 // 读取行数据
-                o.readXSSFRow(stream);
+                o.readFrom(fromStream);
             });
         }
     }

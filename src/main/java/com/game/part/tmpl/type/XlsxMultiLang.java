@@ -90,15 +90,15 @@ public class XlsxMultiLang extends AbstractXlsxCol {
     }
 
     @Override
-    protected void readImpl(XSSFRowReadStream stream) {
-        if (stream == null) {
+    protected void readImpl(XSSFRowReadStream fromStream) {
+        if (fromStream == null) {
             // 如果参数对象为空,
             // 则直接退出!
             return;
         }
 
         // 读取原文
-        this._origStr = stream.readStr();
+        this._origStr = fromStream.readStr();
 
         if (XlsxTmplServ.OBJ._lang != null &&
             XlsxTmplServ.OBJ._lang.isEmpty() == false) {

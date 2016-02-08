@@ -40,9 +40,9 @@ public class XlsxBool extends PrimitiveTypeCol<Boolean> {
     }
 
     @Override
-    protected void readImpl(XSSFRowReadStream stream) {
-        if (stream != null) {
-            super.setObjVal(stream.readBool());
+    protected void readImpl(XSSFRowReadStream fromStream) {
+        if (fromStream != null) {
+            super.setObjVal(fromStream.readBool());
         }
     }
 

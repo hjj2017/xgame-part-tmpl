@@ -52,9 +52,9 @@ public class XlsxTime extends PrimitiveTypeCol<LocalTime> {
     }
 
     @Override
-    protected void readImpl(XSSFRowReadStream stream) {
-        if (stream != null) {
-            super.setObjVal(stream.readTime());
+    protected void readImpl(XSSFRowReadStream fromStream) {
+        if (fromStream != null) {
+            super.setObjVal(fromStream.readTime());
         }
     }
 
