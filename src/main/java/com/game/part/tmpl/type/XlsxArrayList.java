@@ -22,10 +22,27 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
     private final List<T> _objValList = new ArrayList<>();
 
     /**
-     * 类默认构造器
+     * 类参数构造器
+     *
+     * @param num
+     * @param clazzOfCol
      *
      */
-    public XlsxArrayList() {
+    public XlsxArrayList(int num, Class<T> clazzOfCol) {
+        if (num <= 0 ||
+            clazzOfCol == null) {
+            return;
+        }
+
+        for (int i = 0; i < num; i++) {
+            try {
+                // 创建对象并添加到列表
+                this._objValList.add(clazzOfCol.newInstance());
+            } catch (Exception ex) {
+                // 包装并抛出异常!
+                throw new XlsxTmplError(ex);
+            }
+        }
     }
 
     /**
@@ -36,8 +53,10 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
      */
     @SuppressWarnings("unchecked")
     public XlsxArrayList(T ... tArr) {
-        if (tArr != null &&
-            tArr.length > 0) {
+        if (tArr == null ||
+            tArr.length <= 0) {
+            return;
+        } else {
             Collections.addAll(this._objValList, tArr);
         }
     }
@@ -46,8 +65,6 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
     public void validate() {
         if (this._objValList == null ||
             this._objValList.isEmpty()) {
-            // 如果数值列表为空,
-            // 则直接退出!
             return;
         }
 
@@ -56,43 +73,6 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
                 o.validate();
             }
         });
-    }
-
-    /**
-     * objVal 不能为空, 但如果真为空值, 则自动创建
-     *
-     * @param objVal
-     * @param elementType
-     * @param elementNum
-     * @return
-     *
-     */
-    public static<T extends AbstractXlsxCol> XlsxArrayList<T> ifNullThenCreate(
-        XlsxArrayList<T> objVal,
-        Class<T> elementType,
-        int elementNum) {
-        // 断言参数不为空
-        assert elementType != null : "elementType";
-        assert elementNum > 0 : "elementNum <= 0";
-
-        if (objVal == null) {
-            objVal = new XlsxArrayList<T>();
-        }
-
-        // 获取元素数量
-        final int COUNT = elementNum - objVal.size();
-
-        try {
-            for (int i = 0; i < COUNT; i++) {
-                // 新建对象并添加到列表
-                objVal.add(elementType.newInstance());
-            }
-        } catch (Exception ex) {
-            // 抛出异常!
-            throw new XlsxTmplError(ex.getMessage(), ex);
-        }
-
-        return objVal;
     }
 
     @Override

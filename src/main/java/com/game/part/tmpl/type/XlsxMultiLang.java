@@ -74,21 +74,6 @@ public class XlsxMultiLang extends AbstractXlsxCol {
         return this._langStr == null ? this._origStr : this._langStr;
     }
 
-    /**
-     * objVal 不能为空, 但如果真为空值, 则自动创建
-     *
-     * @param objVal
-     * @return
-     *
-     */
-    public static XlsxMultiLang ifNullThenCreate(XlsxMultiLang objVal) {
-        if (objVal == null) {
-            return new XlsxMultiLang();
-        }
-
-        return objVal;
-    }
-
     @Override
     protected void readImpl(XSSFRowReadStream fromStream) {
         if (fromStream == null) {

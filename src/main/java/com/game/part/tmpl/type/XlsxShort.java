@@ -63,22 +63,6 @@ public class XlsxShort extends PrimitiveTypeCol<Short> {
     }
 
     /**
-     * objVal 不能为空, 但如果真为空值, 则自动创建
-     *
-     * @param objVal
-     * @return
-     *
-     */
-    public static XlsxShort ifNullThenCreate(XlsxShort objVal) {
-        if (objVal == null) {
-            // 创建对象
-            objVal = new XlsxShort();
-        }
-
-        return objVal;
-    }
-
-    /**
      * 创建 Short 字段对象,
      * 该字段数值必须在大于等于 minVal 且小于等于 maxVal 的闭区间之内!
      * 否则抛出 XlsxTmplError 异常

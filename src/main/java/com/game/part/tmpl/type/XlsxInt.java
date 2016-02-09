@@ -63,22 +63,6 @@ public class XlsxInt extends PrimitiveTypeCol<Integer> {
     }
 
     /**
-     * objVal 不能为空, 但如果真为空值, 则自动创建
-     *
-     * @param objVal
-     * @return
-     *
-     */
-    public static XlsxInt ifNullThenCreate(XlsxInt objVal) {
-        if (objVal == null) {
-            // 创建对象
-            objVal = new XlsxInt();
-        }
-
-        return objVal;
-    }
-
-    /**
      * 创建 Int 字段对象,
      * 该字段数值必须在大于等于 minVal 且小于等于 maxVal 的闭区间之内!
      * 否则抛出 XlsxTmplError 异常

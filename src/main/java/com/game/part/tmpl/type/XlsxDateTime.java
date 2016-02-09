@@ -57,20 +57,4 @@ public class XlsxDateTime extends PrimitiveTypeCol<LocalDateTime> {
             super.setObjVal(fromStream.readDateTime());
         }
     }
-
-    /**
-     * objVal 不能为空, 但如果真为空值, 则自动创建
-     *
-     * @param objVal
-     * @return
-     *
-     */
-    public static XlsxDateTime ifNullThenCreate(XlsxDateTime objVal) {
-        if (objVal == null) {
-            // 创建对象
-            objVal = new XlsxDateTime();
-        }
-
-        return objVal;
-    }
 }

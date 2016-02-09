@@ -65,22 +65,6 @@ public class XlsxStr extends PrimitiveTypeCol<String> {
     }
 
     /**
-     * objVal 不能为空, 但如果真为空值, 则自动创建
-     *
-     * @param objVal
-     * @return
-     *
-     */
-    public static XlsxStr ifNullThenCreate(XlsxStr objVal) {
-        if (objVal == null) {
-            // 创建对象
-            objVal = new XlsxStr();
-        }
-
-        return objVal;
-    }
-
-    /**
      * 创建 Str 字段对象,
      * 该字段字符串值必须符合 regEx 正则表达式要求!
      * 否则抛出 XlsxTmplError 异常
