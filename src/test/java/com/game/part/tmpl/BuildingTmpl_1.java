@@ -1,6 +1,5 @@
 package com.game.part.tmpl;
 
-import com.game.part.tmpl.anno.ElementNum;
 import com.game.part.tmpl.anno.FromXlsxFile;
 import com.game.part.tmpl.type.AbstractXlsxTmpl;
 import com.game.part.tmpl.type.XlsxArrayList;
@@ -36,7 +35,6 @@ public class BuildingTmpl_1 extends AbstractXlsxTmpl {
      * @see FuncTmpl
      *
      */
-    @ElementNum(3)
     public XlsxArrayList<FuncTmpl> _func = new XlsxArrayList<>(
         new FuncTmpl() {
             @Override
@@ -47,6 +45,8 @@ public class BuildingTmpl_1 extends AbstractXlsxTmpl {
                     throw new XlsxTmplError(this, "建筑的第 1 个功能为空");
                 }
             }
-        }
+        },
+        new FuncTmpl(),
+        new FuncTmpl()
     );
 }

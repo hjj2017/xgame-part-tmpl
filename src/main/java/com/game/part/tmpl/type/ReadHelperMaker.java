@@ -1,7 +1,6 @@
 package com.game.part.tmpl.type;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.text.MessageFormat;
 import java.util.HashSet;
 import java.util.List;
@@ -19,7 +18,6 @@ import javassist.CtNewMethod;
 import com.game.part.tmpl.XSSFRowReadStream;
 import com.game.part.tmpl.XlsxTmplError;
 import com.game.part.tmpl.XlsxTmplServ;
-import com.game.part.tmpl.anno.ElementNum;
 import com.game.part.util.ClazzUtil;
 import com.game.part.util.FieldUtil;
 

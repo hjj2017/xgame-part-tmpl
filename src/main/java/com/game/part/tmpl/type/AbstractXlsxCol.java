@@ -1,11 +1,9 @@
 package com.game.part.tmpl.type;
 
-import com.game.part.tmpl.XlsxTmplError;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.game.part.tmpl.XSSFRowReadStream;
-
-import java.text.MessageFormat;
+import com.game.part.tmpl.XlsxTmplError;
 
 /**
  * Excel 列
@@ -34,7 +32,7 @@ public abstract class AbstractXlsxCol {
     /**
      * 获取 Excel 文件名
      *
-     * @return
+     * @return Excel 文件名
      *
      */
     public String getXlsxFileName() {
@@ -42,9 +40,9 @@ public abstract class AbstractXlsxCol {
     }
 
     /**
-     * 获取页签名称
+     * 获取 Excel 页签名称
      *
-     * @return
+     * @return Excel 页签名称
      *
      */
     public String getSheetName() {
@@ -52,9 +50,9 @@ public abstract class AbstractXlsxCol {
     }
 
     /**
-     * 获取行索引
+     * 获取数据行索引
      *
-     * @return
+     * @return 数据行索引
      *
      */
     public int getRowIndex() {
@@ -64,7 +62,7 @@ public abstract class AbstractXlsxCol {
     /**
      * 获取列索引
      *
-     * @return
+     * @return 列索引
      *
      */
     public int getColIndex() {
@@ -104,9 +102,7 @@ public abstract class AbstractXlsxCol {
     protected abstract void readImpl(XSSFRowReadStream fromStream);
 
     /**
-     * 验证字段的正确性
-     *
-     * @return
+     * 验证字段的正确性, 必要时在实现类中重写
      *
      */
     protected void validate() {
@@ -118,13 +114,16 @@ public abstract class AbstractXlsxCol {
     }
 
     /**
-     * 从 Excel 行数据流中读取数据并返回 Xlsx 列对象
+     * 从 Excel 行数据流中读取数据并返回 Xlsx 列对象,
+     * <font color="#990000">注意 : 该函数并没有显式调用的地方!</font>
+     * 该函数被用于 ReadHelperMaker 类中,
+     * ReadHelperMaker 自动生成的代码中会调用该函数!
      *
-     * @param toXlsxColObj
-     * @param fromStream
-     * @param clazzOfCol
-     * @param <TXlsxCol>
-     * @return
+     * @param toXlsxColObj 读取数据到 Xlsx 列对象中
+     * @param fromStream 从 "Xlsx 行读取流" 中读取数据, 该类包装了 XSSFRow
+     * @param clazzOfCol Xlsx 列的类定义, 当 toXlsxColObj 为空时, 用于创建 toXlsxColObj 对象
+     * @param <TXlsxCol> 模板参数, 标注 toXlsxColObj 的类型
+     * @return 读取数据完成之后的 Xlsx 列对象
      *
      */
     public static <TXlsxCol extends AbstractXlsxCol> TXlsxCol readFromAndGet(TXlsxCol toXlsxColObj, XSSFRowReadStream fromStream, Class<TXlsxCol> clazzOfCol) {
