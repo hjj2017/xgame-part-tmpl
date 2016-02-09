@@ -6,7 +6,7 @@
 
     <groupId>Xgame</groupId>
     <artifactId>xgame-part-tmpl</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>xgame-part-tmpl</name>
     <packaging>jar</packaging>
     <properties>
