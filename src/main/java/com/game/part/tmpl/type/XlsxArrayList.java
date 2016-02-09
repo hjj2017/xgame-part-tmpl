@@ -2,7 +2,6 @@ package com.game.part.tmpl.type;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -20,29 +19,29 @@ import com.game.part.tmpl.XlsxTmplError;
 public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol implements List<T> {
     /** 数值列表 */
     private final List<T> _objValList = new ArrayList<>();
+    /** 最大个数 */
+    private final int _maxNum;
+    /** Xlsx 列的类定义 */
+    private final Class<T> _clazzOfCol;
 
     /**
      * 类参数构造器
      *
-     * @param num
-     * @param clazzOfCol
+     * @param maxNum 最大数量
+     * @param clazzOfCol Xlsx 列的类定义
+     * @throws IllegalArgumentException if num <= 0 || clazzOfCol == null
      *
      */
-    public XlsxArrayList(int num, Class<T> clazzOfCol) {
-        if (num <= 0 ||
+    public XlsxArrayList(int maxNum, Class<T> clazzOfCol) {
+        if (maxNum <= 0 ||
             clazzOfCol == null) {
-            return;
+            // 如果参数对象为空,
+            // 则抛出异常!
+            throw new IllegalArgumentException("num <= 0 || clazzOfCol == null");
         }
 
-        for (int i = 0; i < num; i++) {
-            try {
-                // 创建对象并添加到列表
-                this._objValList.add(clazzOfCol.newInstance());
-            } catch (Exception ex) {
-                // 包装并抛出异常!
-                throw new XlsxTmplError(ex);
-            }
-        }
+        this._maxNum = maxNum;
+        this._clazzOfCol = clazzOfCol;
     }
 
     /**
@@ -55,10 +54,13 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
     public XlsxArrayList(T ... tArr) {
         if (tArr == null ||
             tArr.length <= 0) {
-            return;
-        } else {
-            Collections.addAll(this._objValList, tArr);
+            // 如果参数对象为空,
+            // 则抛出异常!
+            throw new IllegalArgumentException("null or empty tArr");
         }
+
+        this._maxNum = tArr.length;
+        this._clazzOfCol = (Class<T>)tArr[0].getClass();
     }
 
     @Override
@@ -77,17 +79,37 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
 
     @Override
     protected void readImpl(XSSFRowReadStream fromStream) {
-        if (fromStream == null ||
-            this._objValList == null ||
-            this._objValList.isEmpty()) {
+        if (fromStream == null) {
+            // 如果参数对象为空,
+            // 则直接退出!
             return;
-        } else {
-            this._objValList.forEach(o -> {
-                // 断言参数不为空
-                assert o != null : "o";
-                // 读取行数据
-                o.readFrom(fromStream);
-            });
+        }
+
+        try {
+            for (int i = 0; i < this._maxNum; i++) {
+                if (fromStream.isEol()) {
+                    // 如果已经读取到行尾,
+                    // 则直接退出!
+                    return;
+                }
+
+                T xlsxCol;
+
+                if (i >= this._objValList.size()) {
+                    // 创建新的对象
+                    xlsxCol = this._clazzOfCol.newInstance();
+                } else {
+                    // 获取旧的对象
+                    xlsxCol = this._objValList.get(i);
+                }
+
+                // 读取 Xlsx 行数据并添加到列表
+                xlsxCol.readFrom(fromStream);
+                this._objValList.add(xlsxCol);
+            }
+        } catch (Exception ex) {
+            // 包装并抛出异常!
+            throw new XlsxTmplError(ex);
         }
     }
 

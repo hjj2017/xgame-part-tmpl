@@ -35,18 +35,17 @@ public class BuildingTmpl_1 extends AbstractXlsxTmpl {
      * @see FuncTmpl
      *
      */
-    public XlsxArrayList<FuncTmpl> _func = new XlsxArrayList<>(
-        new FuncTmpl() {
-            @Override
-            protected void validate() {
-                if (this._Id == null ||
-                    this._Id.getObjVal() == null ||
-                    this._Id.getIntVal() <= 0) {
-                    throw new XlsxTmplError(this, "建筑的第 1 个功能为空");
-                }
+    public XlsxArrayList<FuncTmpl> _funcList = new XlsxArrayList<FuncTmpl>(3, FuncTmpl.class) {
+        @Override
+        public void validate() {
+            FuncTmpl func = this.get(0);
+            if (func._Id == null ||
+                func._Id.getObjVal() == null ||
+                func._Id.getIntVal() <= 0) {
+                throw new XlsxTmplError(this, "建筑的第 1 个功能为空");
             }
-        },
-        new FuncTmpl(),
-        new FuncTmpl()
-    );
+
+            super.validate();
+        }
+    };
 }
