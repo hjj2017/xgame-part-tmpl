@@ -50,18 +50,38 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
      * @param tArr
      *
      */
-    @SuppressWarnings("unchecked")
     public XlsxArrayList(T ... tArr) {
-        if (tArr == null ||
-            tArr.length <= 0) {
+        this(tArr == null ? 0 : tArr.length, tArr);
+    }
+
+    /**
+     * 类参数构造器
+     *
+     * @param maxNum 最大数量
+     * @param tArr Xlsx 列对象数组
+     * @throws IllegalArgumentException if maxNum <= 0 || null or empty tArr
+     *
+     */
+    public XlsxArrayList(int maxNum, T ... tArr) {
+        if (maxNum <= 0 ||
+            tArr == null ||
+            tArr.length <= 0 ||
+            tArr[0] == null) {
             // 如果参数对象为空,
             // 则抛出异常!
-            throw new IllegalArgumentException("null or empty tArr");
+            throw new IllegalArgumentException("maxNum <= 0 || null or empty tArr");
         }
 
-        this._maxNum = tArr.length;
+        this._maxNum = maxNum;
         this._clazzOfCol = (Class<T>)tArr[0].getClass();
+
+        for (int i = 0; i < tArr.length; i++) {
+            if (tArr[i] != null) {
+                this._objValList.add(tArr[i]);
+            }
+        }
     }
+
 
     @Override
     public void validate() {

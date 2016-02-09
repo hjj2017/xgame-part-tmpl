@@ -38,8 +38,11 @@ public class BuildingTmpl_1 extends AbstractXlsxTmpl {
     public XlsxArrayList<FuncTmpl> _funcList = new XlsxArrayList<FuncTmpl>(3, FuncTmpl.class) {
         @Override
         public void validate() {
-            FuncTmpl func = this.get(0);
-            if (func._Id == null ||
+            // 获取建筑的第一个功能
+            FuncTmpl func = this.size() > 1 ? this.get(0) : null;
+
+            if (func == null ||
+                func._Id == null ||
                 func._Id.getObjVal() == null ||
                 func._Id.getIntVal() <= 0) {
                 throw new XlsxTmplError(this, "建筑的第 1 个功能为空");
