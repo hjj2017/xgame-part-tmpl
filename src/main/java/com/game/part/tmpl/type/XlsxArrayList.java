@@ -115,17 +115,17 @@ public class XlsxArrayList<T extends AbstractXlsxCol> extends AbstractXlsxCol im
 
                 T xlsxCol;
 
-                if (i >= this._objValList.size()) {
+                if (i >= this.size()) {
                     // 创建新的对象
                     xlsxCol = this._clazzOfCol.newInstance();
                 } else {
                     // 获取旧的对象
-                    xlsxCol = this._objValList.get(i);
+                    xlsxCol = this.get(i);
                 }
 
                 // 读取 Xlsx 行数据并添加到列表
                 xlsxCol.readFrom(fromStream);
-                this._objValList.add(xlsxCol);
+                this.add(xlsxCol);
             }
         } catch (Exception ex) {
             // 包装并抛出异常!

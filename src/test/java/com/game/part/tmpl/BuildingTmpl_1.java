@@ -39,7 +39,7 @@ public class BuildingTmpl_1 extends AbstractXlsxTmpl {
         @Override
         public void validate() {
             // 获取建筑的第一个功能
-            FuncTmpl func = this.size() > 1 ? this.get(0) : null;
+            FuncTmpl func = this.size() > 0 ? this.get(0) : null;
 
             if (func == null ||
                 func._Id == null ||
